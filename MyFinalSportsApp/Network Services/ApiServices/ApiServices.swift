@@ -7,6 +7,6 @@
 
 import Foundation
 
-protocol ApiService {    
+protocol ApiService {    // Dependency Injection
     func fetchUsers(endPoint: String, completion: @escaping ((SportsList?, Error?) -> Void))
 }

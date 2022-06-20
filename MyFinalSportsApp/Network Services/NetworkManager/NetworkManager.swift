@@ -13,7 +13,7 @@ class NetworkManager: ApiService {
         if let  url = URL(string: UrlServices(endPoint: endPoint).url) {
             URLSession.shared.dataTask(with: url) { data, response, error in
                 if let data = data {
-                   
+              
                     let decodedArray: SportsList = convertFromJson(data: data) ?? SportsList(sports: [])
                     completion(decodedArray,nil)
                 }
