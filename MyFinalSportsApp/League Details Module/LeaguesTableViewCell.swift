@@ -7,7 +7,7 @@
 
 import UIKit
 
-class LeagueDetailsTableViewCell: UITableViewCell {
+class LeaguesTableViewCell: UITableViewCell {
 
     @IBOutlet weak var labelLeagueViewCell: UILabel!
     @IBOutlet weak var imageLeagueViewCell: UIImageView!

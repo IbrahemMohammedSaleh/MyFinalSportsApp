@@ -113,12 +113,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xTp-JS-LZH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1642" y="419"/>
+            <point key="canvasLocation" x="822" y="105"/>
         </scene>
-        <!--League Details Table View Controller-->
+        <!--League Table View Controller-->
         <scene sceneID="rce-oH-hDI">
             <objects>
-                <viewController storyboardIdentifier="LeagueDetailVC" id="bYi-sk-7T6" customClass="LeagueDetailsTableViewController" customModule="MyFinalSportsApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LeaguesVC" id="bYi-sk-7T6" customClass="LeagueTableViewController" customModule="MyFinalSportsApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Tzg-ua-xVK">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -133,12 +133,27 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <connections>
-                        <outlet property="tableViewLeagueDetails" destination="LlQ-DR-Wik" id="2SP-fS-gMV"/>
+                        <outlet property="tableViewLeagues" destination="LlQ-DR-Wik" id="2SP-fS-gMV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d9I-NI-xFO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2950.7246376811595" y="873.88392857142856"/>
+            <point key="canvasLocation" x="1467" y="836"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="wBd-kb-HsP">
+            <objects>
+                <viewController id="WIU-6L-cC6" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bit-9w-RXl">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="gsl-3v-MEZ"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Gyv-mJ-s9w" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2599" y="833"/>
         </scene>
         <!--Sports-->
         <scene sceneID="XO2-nR-WU0">

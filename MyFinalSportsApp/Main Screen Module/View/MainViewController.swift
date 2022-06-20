@@ -47,16 +47,16 @@ extension MainViewController: UICollectionViewDelegate  {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
-        if let detailVC = storyboard?.instantiateViewController(withIdentifier: "LeagueDetailVC") as? LeagueDetailsTableViewController {
+        if let leaguesVC = storyboard?.instantiateViewController(withIdentifier: "LeaguesVC") as? LeagueTableViewController {
             
-            detailVC.fetchSportNameToLeagueVC = sportsArray[indexPath.row].strSport
+            leaguesVC.fetchSportNameToLeagueVC = sportsArray[indexPath.row].strSport
             
 
             
             
             
             
-            self.navigationController?.pushViewController(detailVC , animated: true)
+            self.navigationController?.pushViewController(leaguesVC , animated: true)
         }
       
  

@@ -7,10 +7,10 @@
 
 import UIKit
 
-class LeagueDetailsTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class LeagueTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     
-    @IBOutlet weak var tableViewLeagueDetails: UITableView!
+    @IBOutlet weak var tableViewLeagues: UITableView!
     
     var fetchSportNameToLeagueVC: String?
     var newLeaguesArray = [League]()
@@ -32,13 +32,11 @@ class LeagueDetailsTableViewController: UIViewController, UITableViewDelegate, U
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        tableViewLeagueDetails.delegate = self
-        tableViewLeagueDetails.dataSource = self
-        tableViewLeagueDetails.register(UINib(nibName: "LeagueDetailsTableViewCell", bundle: nil), forCellReuseIdentifier: "LeagueDetailsTableViewCell")
+        tableViewLeagues.delegate = self
+        tableViewLeagues.dataSource = self
+        tableViewLeagues.register(UINib(nibName: "LeaguesTableViewCell", bundle: nil), forCellReuseIdentifier: "LeaguesTableViewCell")
         
-        
-        
-        
+  
         self.title = "Leagues"
      
         let urlString = "https://www.thesportsdb.com/api/v1/json/2/all_leagues.php"
@@ -54,7 +52,7 @@ class LeagueDetailsTableViewController: UIViewController, UITableViewDelegate, U
         let newdecoder = JSONDecoder()
         if let jsonMovies = try? newdecoder.decode(Leagues.self, from: json) {
            leaguesArray = jsonMovies.leagues
-            tableViewLeagueDetails.reloadData()
+            tableViewLeagues.reloadData()
         }
     }
     // MARK: - Table view data source
@@ -71,7 +69,7 @@ class LeagueDetailsTableViewController: UIViewController, UITableViewDelegate, U
 
 
      func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableViewLeagueDetails.dequeueReusableCell(withIdentifier: "LeagueDetailsTableViewCell", for: indexPath) as! LeagueDetailsTableViewCell
+        let cell = tableViewLeagues.dequeueReusableCell(withIdentifier: "LeaguesTableViewCell", for: indexPath) as! LeaguesTableViewCell
 
          
          cell.labelLeagueViewCell.text = newLeaguesArray[indexPath.row].strLeague
