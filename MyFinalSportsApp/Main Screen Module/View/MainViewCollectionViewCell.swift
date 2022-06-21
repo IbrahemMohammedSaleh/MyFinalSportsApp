@@ -26,25 +26,13 @@ class MainViewCollectionViewCell: UICollectionViewCell {
      
             sportImage.image = UIImage(data: imagedata! as Data)
             
-            sportImage.translatesAutoresizingMaskIntoConstraints = false
-           // sportImage.contentMode = .s
+            sportImage.layer.cornerRadius = 20
             sportImage.clipsToBounds = true
-            sportImage.layer.cornerRadius = 12
-      
-            contentView.layer.cornerRadius = 6.0
-            contentView.layer.borderWidth = 1.0
-         //   contentView.layer.borderColor = UIColor.clear.cgColor
-            contentView.layer.masksToBounds = true
+            sportImage.layer.masksToBounds = true
+            imageContainer.layer.cornerRadius = 20
+            
         }
     }
     
-//    private func configView() {
-//        self.clipsToBounds = false
-//        self.backgroundColor = .systemBackground
-//        self.layer.cornerRadius = 10
-//        self.layer.shadowColor = UIColor.black.cgColor
-//        self.layer.shadowOffset = CGSize(width: 0, height: 0.0)
-//        self.layer.shadowRadius = 10
-//        self.layer.shadowOpacity = 0.2
-//    }
 }
+

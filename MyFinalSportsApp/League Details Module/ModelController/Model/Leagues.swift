@@ -11,7 +11,7 @@ import Foundation
 //
 //   let sportsList = try? newJSONDecoder().decode(SportsList.self, from: jsonData)
 
-import Foundation
+
 
 struct Leagues: Codable {
     let leagues: [League]

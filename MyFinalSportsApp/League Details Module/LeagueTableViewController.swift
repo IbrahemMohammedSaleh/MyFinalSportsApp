@@ -80,6 +80,8 @@ class LeagueTableViewController: UIViewController, UITableViewDelegate, UITableV
         return cell
     }
 
-
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "LeaguesDetailsSegue", sender: self)
+    }
 
 }
