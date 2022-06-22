@@ -12,7 +12,7 @@ import Foundation
 struct UrlServices {
     var endPoint: String = ""
     var url: String {
-        return "https://www.thesportsdb.com/api/v1/json/2/all_\(endPoint)"
+        return "https://www.thesportsdb.com/api/v1/json/2/\(endPoint)"
     }
 }
 

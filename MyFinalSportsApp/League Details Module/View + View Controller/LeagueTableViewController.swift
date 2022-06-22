@@ -38,7 +38,7 @@ class LeagueTableViewController: UIViewController, UITableViewDelegate, UITableV
         
   
         let leaguesPresenter: ILeaguesPresenter = LeaguesPresenter(iLeaguesView: self) // 1
-        leaguesPresenter.fetchData(endPoint: "leagues.php")
+        leaguesPresenter.fetchData(endPoint: "all_leagues.php")
         
         self.title = "Leagues"
      

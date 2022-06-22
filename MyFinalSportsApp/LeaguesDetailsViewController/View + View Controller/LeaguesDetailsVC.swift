@@ -21,22 +21,29 @@ class LeaguesDetailsVC: UIViewController {
         
         setupCollectionView()
         
-        let urlString = "https://www.thesportsdb.com/api/v1/json/2/eventsseason.php?id=5107"
-
-        if let url = URL(string: urlString) {
-            if let data = try? Data(contentsOf: url) {
-                parse(json: data)
-            }
-        }
+        
+        let leagueDetailsPresenter: ILeagueDetailsPresenter = LeagueDetailPresenter(iLeagueDetailsView: self)  // 1
+        leagueDetailsPresenter.fetchData(endPoint: "all_sports.php")
+        
+        
+        
+        
+//        let urlString = "https://www.thesportsdb.com/api/v1/json/2/eventsseason.php?id=5107"
+//
+//        if let url = URL(string: urlString) {
+//            if let data = try? Data(contentsOf: url) {
+//                parse(json: data)
+//            }
+//        }
     }
     
-    func parse(json: Data) {
-        let newdecoder2 = JSONDecoder()
-        if let jsonMovies = try? newdecoder2.decode(EventsList.self, from: json) {
-            eventsArray = jsonMovies.events
-            //eventsArray.reloadData()
-        }
-    }
+//    func parse(json: Data) {
+//        let newdecoder2 = JSONDecoder()
+//        if let jsonMovies = try? newdecoder2.decode(EventsList.self, from: json) {
+//            eventsArray = jsonMovies.events
+//            //eventsArray.reloadData()
+//        }
+//    }
     /*
     // MARK: - Navigation
 
@@ -52,7 +59,22 @@ class LeaguesDetailsVC: UIViewController {
 }
 
 
+extension LeaguesDetailsVC: ILeagueDetailsView {
+    func renderLeagueDetailsView(events: EventsList) {
+        eventsArray = events.events
+        DispatchQueue.main.async {
+            self.upcomingCollectionView.reloadData()
+        }
+    }
+    
+    func postLeagueDetailsView(error: Error) {
+        print(error.localizedDescription)
+               
+    }
+    
 
+
+}
 
 
 

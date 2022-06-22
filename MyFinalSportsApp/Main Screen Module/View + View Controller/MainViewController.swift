@@ -21,7 +21,7 @@ class MainViewController: UIViewController {
      //   mainViewCollectionView.collectionViewLayout = UICollectionViewFlowLayout()
         
         let mainPresenter: IMainPresenter = MainPresenter(iMainView: self) // 1
-        mainPresenter.fetchData(endPoint: "sports.php")
+        mainPresenter.fetchData(endPoint: "all_sports.php")
         
     }
     
