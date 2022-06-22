@@ -7,21 +7,59 @@
 
 import Foundation
 
-class NetworkManager: ApiService {
-    func fetchUsers(endPoint: String, completion: @escaping ((SportsList?, Error?) -> Void)) {
-        
+class NetworkManager: ApiServiceForSportsList, ApiServiceForLeagues {
+    func fetchLeagues(endPoint: String, completion: @escaping ((Leagues?, Error?) -> Void)) {
         if let  url = URL(string: UrlServices(endPoint: endPoint).url) {
-            URLSession.shared.dataTask(with: url) { data, response, error in
-                if let data = data {
-              
-                    let decodedArray: SportsList = convertFromJson(data: data) ?? SportsList(sports: [])
-                    completion(decodedArray,nil)
+                    URLSession.shared.dataTask(with: url) { data, response, error in
+                        if let data = data {
+        
+                            let decodedArray: Leagues = convertFromJson(data: data) ?? Leagues(leagues: [])
+                            completion(decodedArray.self,nil)
+                        }
+                        if let error = error {
+                           completion(nil, error)
+                        }
+                    }.resume()
                 }
-                if let error = error {
-                   completion(nil, error)
-                }
-            }.resume()
-        }
-
     }
-}
+    
+    
+    
+    func fetchSportsList(endPoint: String, completion: @escaping ((SportsList?, Error?) -> Void)) {
+        if let  url = URL(string: UrlServices(endPoint: endPoint).url) {
+                    URLSession.shared.dataTask(with: url) { data, response, error in
+                        if let data = data {
+        
+                            let decodedArray: SportsList = convertFromJson(data: data) ?? SportsList(sports: [])
+                            completion(decodedArray.self,nil)
+                        }
+                        if let error = error {
+                           completion(nil, error)
+                        }
+                    }.resume()
+                }
+        
+            }
+    }
+    
+ 
+   
+    
+
+    
+//    func fetchUsers(endPoint: String, completion: @escaping ((SportsList?, Error?) -> Void)) {
+//
+//        if let  url = URL(string: UrlServices(endPoint: endPoint).url) {
+//            URLSession.shared.dataTask(with: url) { data, response, error in
+//                if let data = data {
+//
+//                    let decodedArray: SportsList = convertFromJson(data: data) ?? SportsList(sports: [])
+//                    completion(decodedArray.self,nil)
+//                }
+//                if let error = error {
+//                   completion(nil, error)
+//                }
+//            }.resume()
+//        }
+//
+//    }

@@ -7,6 +7,10 @@
 
 import Foundation
 
-protocol ApiService {    // Dependency Injection
-    func fetchUsers(endPoint: String, completion: @escaping ((SportsList?, Error?) -> Void))
+
+protocol ApiServiceForSportsList {    // Dependency Injection
+    func fetchSportsList(endPoint: String, completion: @escaping ((SportsList?, Error?) -> Void))
+}
+protocol ApiServiceForLeagues {    // Dependency Injection
+    func fetchLeagues(endPoint: String, completion: @escaping ((Leagues?, Error?) -> Void))
 }

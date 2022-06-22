@@ -7,14 +7,7 @@
 
 import UIKit
 
-//class CollectionViewCell2: UICollectionViewCell {
-//
-//    override func awakeFromNib() {
-//        super.awakeFromNib()
-//        // Initialization code
-//    }
-//
-//}
+
 import UIKit
 
 class upcomingCollectionViewCell: UICollectionViewCell{

@@ -11,7 +11,7 @@ import Foundation
 //
 class MainModelController: IMainModel {
     
-    let apiService: ApiService = NetworkManager()
+    let apiServiceForSportsList: ApiServiceForSportsList = NetworkManager()
     let iMainPresenter: IMainPresenter
     
     init(iMainPresenter: IMainPresenter)  {
@@ -21,7 +21,7 @@ class MainModelController: IMainModel {
     //Calling data from network and passing it to presenter
     
     func fetchDataFromApi(endPoint: String) {    // 3
-        apiService.fetchUsers(endPoint: endPoint) { sports, error in
+        apiServiceForSportsList.fetchSportsList(endPoint: endPoint) { sports, error in
             if let sports = sports {
                 self.iMainPresenter.onSuccess(sports: sports)
             }

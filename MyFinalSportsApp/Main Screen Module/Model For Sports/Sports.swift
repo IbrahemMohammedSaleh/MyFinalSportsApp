@@ -16,7 +16,7 @@ import Foundation
 // MARK: - SportsList
  struct SportsList: Codable {
     let sports: [Sport]
-  
+    
 }
 
 // MARK: - Sport

@@ -37,24 +37,27 @@ class LeagueTableViewController: UIViewController, UITableViewDelegate, UITableV
         tableViewLeagues.register(UINib(nibName: "LeaguesTableViewCell", bundle: nil), forCellReuseIdentifier: "LeaguesTableViewCell")
         
   
+        let leaguesPresenter: ILeaguesPresenter = LeaguesPresenter(iLeaguesView: self) // 1
+        leaguesPresenter.fetchData(endPoint: "leagues.php")
+        
         self.title = "Leagues"
      
-        let urlString = "https://www.thesportsdb.com/api/v1/json/2/all_leagues.php"
-
-        if let url = URL(string: urlString) {
-            if let data = try? Data(contentsOf: url) {
-                parse(json: data)
-            }
-        }
+//        let urlString = "https://www.thesportsdb.com/api/v1/json/2/all_leagues.php"
+//
+//        if let url = URL(string: urlString) {
+//            if let data = try? Data(contentsOf: url) {
+//                parse(json: data)
+//            }
+//        }
         
     }
-    func parse(json: Data) {
-        let newdecoder = JSONDecoder()
-        if let jsonMovies = try? newdecoder.decode(Leagues.self, from: json) {
-           leaguesArray = jsonMovies.leagues
-            tableViewLeagues.reloadData()
-        }
-    }
+//    func parse(json: Data) {
+//        let newdecoder = JSONDecoder()
+//        if let jsonMovies = try? newdecoder.decode(Leagues.self, from: json) {
+//           leaguesArray = jsonMovies.leagues
+//            tableViewLeagues.reloadData()
+//        }
+//    }
     // MARK: - Table view data source
 
      func numberOfSections(in tableView: UITableView) -> Int {
@@ -84,4 +87,29 @@ class LeagueTableViewController: UIViewController, UITableViewDelegate, UITableV
         performSegue(withIdentifier: "LeaguesDetailsSegue", sender: self)
     }
 
+}
+extension LeagueTableViewController: ILeaguesView {
+    func renderLeagueDetailsView(leagues: Leagues) {
+        newLeaguesArray = leagues.leagues
+        
+        DispatchQueue.main.async {
+            self.tableViewLeagues.reloadData()
+        }
+    }
+    
+    func postErrorLeagueDetailsView(error: Error) {
+        print(error.localizedDescription)
+    }
+    
+
+//    func renderMainView(sports: SportsList) {   //4
+//        sportsArray = sports.sports
+//
+//        DispatchQueue.main.async {
+//            self.mainViewCollectionView.reloadData()
+//        }
+//    }
+//    func postErrorMainView(error: Error) {
+//        print(error.localizedDescription)
+//    }
 }
