@@ -7,7 +7,24 @@
 
 import Foundation
 
-class NetworkManager: ApiServiceForSportsList, ApiServiceForLeagues, ApiServiceForEvents, ApiServiceForTeams {
+class NetworkManager: ApiServiceForSportsList, ApiServiceForLeagues, ApiServiceForEvents, ApiServiceForTeams, ApiServiceForLatest {
+    func fetchLatest(endPoint: String, completion: @escaping ((EventsList?, Error?) -> Void)) {
+        if let  url = URL(string: UrlServices(endPoint: endPoint).url) {
+                    URLSession.shared.dataTask(with: url) { data, response, error in
+                        if let data = data {
+        
+                            let decodedArray: EventsList = convertFromJson(data: data) ?? EventsList(events: [])
+                            completion(decodedArray.self,nil)
+                        }
+                        if let error = error {
+                           completion(nil, error)
+                        }
+                    }.resume()
+                }
+    }
+    
+    
+    
     func fetchEventsList(endPoint: String, completion: @escaping ((EventsList?, Error?) -> Void)) {
         if let  url = URL(string: UrlServices(endPoint: endPoint).url) {
                     URLSession.shared.dataTask(with: url) { data, response, error in
@@ -23,12 +40,12 @@ class NetworkManager: ApiServiceForSportsList, ApiServiceForLeagues, ApiServiceF
                 }
     }
     
-    func fetchTeams(endPoint: String, completion: @escaping ((Teams?, Error?) -> Void)) {
+    func fetchTeams(endPoint: String, completion: @escaping ((TeamsList?, Error?) -> Void)) {
         if let  url = URL(string: UrlServices(endPoint: endPoint).url) {
                     URLSession.shared.dataTask(with: url) { data, response, error in
                         if let data = data {
         
-                            let decodedArray: Teams = convertFromJson(data: data) ?? Teams(teams: [])
+                            let decodedArray: TeamsList = convertFromJson(data: data) ?? TeamsList(teams: [])
                             completion(decodedArray.self,nil)
                         }
                         if let error = error {
@@ -40,12 +57,12 @@ class NetworkManager: ApiServiceForSportsList, ApiServiceForLeagues, ApiServiceF
     
   
     
-    func fetchLeagues(endPoint: String, completion: @escaping ((Leagues?, Error?) -> Void)) {
+    func fetchLeagues(endPoint: String, completion: @escaping ((AllLeagueByStrSport?, Error?) -> Void)) {
         if let  url = URL(string: UrlServices(endPoint: endPoint).url) {
                     URLSession.shared.dataTask(with: url) { data, response, error in
                         if let data = data {
         
-                            let decodedArray: Leagues = convertFromJson(data: data) ?? Leagues(leagues: [])
+                            let decodedArray: AllLeagueByStrSport = convertFromJson(data: data) ?? AllLeagueByStrSport(countries: [])
                             completion(decodedArray.self,nil)
                         }
                         if let error = error {
@@ -54,7 +71,7 @@ class NetworkManager: ApiServiceForSportsList, ApiServiceForLeagues, ApiServiceF
                     }.resume()
                 }
     }
-    
+   
     
     
     func fetchSportsList(endPoint: String, completion: @escaping ((SportsList?, Error?) -> Void)) {
@@ -72,10 +89,27 @@ class NetworkManager: ApiServiceForSportsList, ApiServiceForLeagues, ApiServiceF
                 }
         
             }
+
+    
+    
     }
     
  
    
-    
+//MARK:- UnComment For All Leagues
+//    func fetchLeagues(endPoint: String, completion: @escaping ((AllLeagueByStrSport?, Error?) -> Void)) {
+//        if let  url = URL(string: UrlServices(endPoint: endPoint).url) {
+//                    URLSession.shared.dataTask(with: url) { data, response, error in
+//                        if let data = data {
+//
+//                            let decodedArray: AllLeagueByStrSport = convertFromJson(data: data) ?? AllLeagues(leagues: [])
+//                            completion(decodedArray.self,nil)
+//                        }
+//                        if let error = error {
+//                           completion(nil, error)
+//                        }
+//                    }.resume()
+//                }
+//    }
 
  

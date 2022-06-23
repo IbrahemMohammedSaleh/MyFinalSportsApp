@@ -51,10 +51,6 @@ extension MainViewController: UICollectionViewDelegate  {
             
             leaguesVC.fetchSportNameToLeagueVC = sportsArray[indexPath.row].strSport
             
-
-            
-            
-            
             
             self.navigationController?.pushViewController(leaguesVC , animated: true)
         }

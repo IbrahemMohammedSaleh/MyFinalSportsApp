@@ -12,12 +12,17 @@ protocol ApiServiceForSportsList {    // Dependency Injection
     func fetchSportsList(endPoint: String, completion: @escaping ((SportsList?, Error?) -> Void))
 }
 protocol ApiServiceForLeagues {    // Dependency Injection
-    func fetchLeagues(endPoint: String, completion: @escaping ((Leagues?, Error?) -> Void))
+    func fetchLeagues(endPoint: String, completion: @escaping ((AllLeagueByStrSport?, Error?) -> Void))
 }
-
 protocol ApiServiceForEvents {    // Dependency Injection
     func fetchEventsList(endPoint: String, completion: @escaping ((EventsList?, Error?) -> Void))
 }
 protocol ApiServiceForTeams {    // Dependency Injection
-    func fetchTeams(endPoint: String, completion: @escaping ((Teams?, Error?) -> Void))
+    func fetchTeams(endPoint: String, completion: @escaping ((TeamsList?, Error?) -> Void))
 }
+protocol ApiServiceForLatest {    // Dependency Injection
+    func fetchLatest(endPoint: String, completion: @escaping ((EventsList?, Error?) -> Void))
+}
+//protocol ApiServiceForLeagues {    // Dependency Injection
+//    func fetchLeagues(endPoint: String, completion: @escaping ((AllLeagues?, Error?) -> Void))
+//}

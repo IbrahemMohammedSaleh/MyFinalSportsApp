@@ -21,14 +21,25 @@ import Foundation
 
 // MARK: - Sport
 struct Sport: Codable {
-    let idSport, strSport: String
+    let idSport: String
+    let strSport: String
     let strFormat: StrFormat
     let strSportThumb: String
     let strSportIconGreen: String
     let strSportDescription: String
 }
 
+
 enum StrFormat: String, Codable {
     case eventSport = "EventSport"
     case teamvsTeam = "TeamvsTeam"
+}
+
+struct AllCountries: Codable {
+    let countries: [Countries]?
+}
+
+struct Countries: Codable {
+
+    let nameEn: String
 }

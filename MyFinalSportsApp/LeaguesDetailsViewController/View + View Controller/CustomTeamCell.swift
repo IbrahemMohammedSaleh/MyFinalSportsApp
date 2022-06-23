@@ -1,0 +1,13 @@
+//
+//  CustomTeamCell.swift
+//  MyFinalSportsApp
+//
+//  Created by Ibrahem's on 23/06/2022.
+//
+
+import UIKit
+
+class CustomTeamCell: UICollectionViewCell {
+    
+    @IBOutlet weak var teamLogo: UIImageView!
+}

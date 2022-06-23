@@ -20,7 +20,7 @@ class MainViewCollectionViewCell: UICollectionViewCell {
    
     func configureCell(with sport: Sport) {
        sportName.text = sport.strSport
-        let urlImag = NSURL(string: sport.strSportThumb)
+        let urlImag = NSURL(string: (sport.strSportThumb))
             let imagedata = NSData.init(contentsOf: urlImag! as URL)
         if imagedata != nil {
      
