@@ -29,10 +29,7 @@ struct Event: Codable {
     let strSeason: String
     let dateEvent,intRound, strTime : String
     
-    
-    
-    
-    
+
 }
 
 

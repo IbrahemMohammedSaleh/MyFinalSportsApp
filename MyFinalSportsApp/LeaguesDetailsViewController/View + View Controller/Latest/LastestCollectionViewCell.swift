@@ -8,6 +8,7 @@
 import UIKit
 
 class LastestCollectionViewCell: UICollectionViewCell {
+    @IBOutlet weak var matchTime: UILabel!
     
     @IBOutlet weak var awayTeam: UILabel!
     @IBOutlet weak var matchResult: UILabel!
@@ -17,11 +18,17 @@ class LastestCollectionViewCell: UICollectionViewCell {
     
     func configureCell(with latest : Event) {
 //        labelLeagueViewCell.text = country.strLeague
-        
-        latestEventImage.image = UIImage(named: "Untitled-1-01.png")
+        matchTime.text = latest.strTime
+        //latestEventImage.image = UIImage(named: "Untitled-1-01.png")
         awayTeam.text = latest.strAwayTeam
         homeTeam.text = latest.strHomeTeam
        // matchResult.text = event.m
         matchDate.text = latest.dateEvent
+        //(result: "\(event.homeTeamScore ?? "") : \(event.awayTeamScore ?? "")")
+        
+   //     matchResult.text = latest.intHomeScore + latest.intAwayScore
+        
+        matchResult.text = ( "\(latest.intHomeScore) : \(latest.intAwayScore)")
+        
     }
 }

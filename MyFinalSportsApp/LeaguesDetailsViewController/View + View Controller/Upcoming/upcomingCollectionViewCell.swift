@@ -27,9 +27,9 @@ class upcomingCollectionViewCell: UICollectionViewCell {
         matchDate.text = event.dateEvent
         matchTime.text = event.strTime
         strEvent.text = event.strEvent
-        upcomingEventImage.image = UIImage(named: "Untitled-1-01.png")
-        upcomingEventImage.layer.cornerRadius = 5
-        
+//        upcomingEventImage.image = UIImage(named: "Untitled-1-01.png")
+//        upcomingEventImage.layer.cornerRadius = 5
+//        
 //        let urlImag = NSURL(string: (event. ?? ""))
 //            let imagedata = NSData.init(contentsOf: urlImag! as URL)
 //        if imagedata != nil {

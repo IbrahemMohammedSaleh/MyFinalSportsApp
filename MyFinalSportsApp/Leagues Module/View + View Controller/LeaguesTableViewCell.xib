@@ -40,7 +40,7 @@
                             <constraint firstAttribute="width" secondItem="gwu-Na-BW3" secondAttribute="height" multiplier="42:43" id="Xmv-X5-gx0"/>
                         </constraints>
                         <state key="normal" title="Button"/>
-                        <buttonConfiguration key="configuration" style="plain" image="youtube"/>
+                        <buttonConfiguration key="configuration" style="plain" image="youtube-logo-png-images-0"/>
                         <connections>
                             <action selector="goToLinkBtnPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Ex9-Lr-rWd"/>
                         </connections>
@@ -69,6 +69,6 @@
     </objects>
     <resources>
         <image name="square.and.arrow.up.fill" catalog="system" width="115" height="128"/>
-        <image name="youtube" width="84" height="84"/>
+        <image name="youtube-logo-png-images-0" width="100" height="75"/>
     </resources>
 </document>

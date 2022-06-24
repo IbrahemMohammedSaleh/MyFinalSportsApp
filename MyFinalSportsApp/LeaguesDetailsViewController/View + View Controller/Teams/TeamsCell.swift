@@ -23,7 +23,7 @@ class TeamsCell: UICollectionViewCell {
             teamsImage.layer.borderWidth = 1
             teamsImage.layer.masksToBounds = false
             
-            teamsImage.layer.cornerRadius = teamsImage.frame.height/2 //This will change with corners of image and height/2 will make this circle shape
+            teamsImage.layer.cornerRadius = teamsImage.frame.height/2.1 //This will change with corners of image and height/2 will make this circle shape
             teamsImage.clipsToBounds = true
             
             

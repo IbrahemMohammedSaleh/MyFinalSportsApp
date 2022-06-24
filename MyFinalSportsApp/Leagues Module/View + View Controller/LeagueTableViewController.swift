@@ -12,7 +12,7 @@ class LeagueTableViewController: UIViewController, UITableViewDelegate, UITableV
     
     @IBOutlet weak var tableViewLeagues: UITableView!
     
-
+    
     
     
     var fetchSportNameToLeagueVC: String?
@@ -102,7 +102,7 @@ class LeagueTableViewController: UIViewController, UITableViewDelegate, UITableV
 
         leagueDetails.fetchTeamsToLeagueDetails = newLeaguesArray[indexPath.row].strLeague
         
-        
+        leagueDetails.titleD = newLeaguesArray[indexPath.row].strLeague
         
         self.present(leagueDetails, animated: true, completion: nil)
     }
