@@ -23,6 +23,9 @@ protocol ApiServiceForTeams {    // Dependency Injection
 protocol ApiServiceForLatest {    // Dependency Injection
     func fetchLatest(endPoint: String, completion: @escaping ((EventsList?, Error?) -> Void))
 }
+protocol ApiServiceForTeamDetails {    // Dependency Injection
+    func fetchTeamDetails(endPoint: String, completion: @escaping ((TeamsList?, Error?) -> Void))
+}
 //protocol ApiServiceForLeagues {    // Dependency Injection
 //    func fetchLeagues(endPoint: String, completion: @escaping ((AllLeagues?, Error?) -> Void))
 //}

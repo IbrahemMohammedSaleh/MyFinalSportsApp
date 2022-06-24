@@ -30,6 +30,8 @@ class LeaguesDetailsVC: UIViewController {
     var newLatestArray = [Event]()
     
     
+    var teams = [Team]()
+    
     override func viewWillAppear(_ animated: Bool) {
         for item in stockTeamsArray {
 
@@ -199,6 +201,8 @@ extension LeaguesDetailsVC : UICollectionViewDataSource,UICollectionViewDelegate
             cell.teamsImage.image = UIImage(named:"default.png")
 
             cell.configureCell(with: newTeamArray[indexPath.row])
+            
+            
 
 
 //
@@ -218,29 +222,37 @@ extension LeaguesDetailsVC : UICollectionViewDataSource,UICollectionViewDelegate
     }
     
       func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        if(collectionView == teamsCollectionView) {
-//        //    let teamScreen = storyboard?.instantiateViewController(identifier: "teamDetailsScreen") as! TeamDetailsViewController
-//         /   teamScreen.team = teams?[indexPath.row]
-//
-//
-//       //     teamScreen.modalPresentationStyle = .overFullScreen
-//
-//            self.present(teamScreen, animated: true, completion: nil)
-//
-//
-//
-//          self.navigationController?.pushViewController(teamScreen, animated: true)
-//
-//        let destinationVC = TeamDetailsViewController()
-//        destinationVC.team = teams?[indexPath.row]
-//        self.performSegue(withIdentifier: "showTeamDetails", sender: self)
-//          //MARK: - send the sport name to the league presenter through sport presenter
-//        if(teamScreen != nil){print("test \(teamScreen.team?.strTeam)")}
-//        print("teamName: \(String(describing: teams?[indexPath.row].strTeam))")
-//      }
+          
+          if(collectionView == teamsCollectionView) {
+          let teamScreen = self.storyboard?.instantiateViewController(withIdentifier: "TeamDetailsVC") as! TeamDetailsVC
+          
+              teamScreen.stadiumNameTD = newTeamArray[indexPath.row].strStadium ?? ""
+              teamScreen.sportsNameTD = newTeamArray[indexPath.row].strSport 
+              teamScreen.leagueNameTD = newTeamArray[indexPath.row].strLeague 
+              teamScreen.temaNameTD = newTeamArray[indexPath.row].strTeam 
+              teamScreen.teamBadgeTD = newTeamArray[indexPath.row].strTeamBadge
+              
+          teamScreen.modalPresentationStyle = .fullScreen
+          self.present(teamScreen, animated: true, completion: nil)
+          
+          
+          /*
+           
+           var stadiumNameTD = ""
+           var teamNameTD = ""
+           var sportsNameTD = ""
+           */
+          teamScreen.fetchTeamsToTeamDetails = newTeamArray[indexPath.row].strTeamBadge
+         
+            teamScreen.sportsNameTD = newTeamArray[indexPath.row].strSport
+      
+              
+           
+          
+ 
     }
 
-
+      }
 
 
 //}
@@ -248,3 +260,4 @@ extension LeaguesDetailsVC : UICollectionViewDataSource,UICollectionViewDelegate
 
 
 }
+

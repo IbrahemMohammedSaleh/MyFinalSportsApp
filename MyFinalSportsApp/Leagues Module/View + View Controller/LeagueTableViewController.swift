@@ -129,8 +129,13 @@ extension LeagueTableViewController: ILeaguesView {
    }
     
    
-    
-   
+//let urlImag = NSURL(string: (team.strTeamBadge ?? ""))
+//    let imagedata = NSData.init(contentsOf: urlImag! as URL)
+//if imagedata != nil {
+//
+//    teamsImage.image = UIImage(data: imagedata! as Data)
+//}
+//   
  
     
 

@@ -7,7 +7,22 @@
 
 import Foundation
 
-class NetworkManager: ApiServiceForSportsList, ApiServiceForLeagues, ApiServiceForEvents, ApiServiceForTeams, ApiServiceForLatest {
+class NetworkManager: ApiServiceForSportsList, ApiServiceForLeagues, ApiServiceForEvents, ApiServiceForTeams, ApiServiceForLatest, ApiServiceForTeamDetails {
+    func fetchTeamDetails(endPoint: String, completion: @escaping ((TeamsList?, Error?) -> Void)) {
+        if let  url = URL(string: UrlServices(endPoint: endPoint).url) {
+                    URLSession.shared.dataTask(with: url) { data, response, error in
+                        if let data = data {
+        
+                            let decodedArray: TeamsList = convertFromJson(data: data) ?? TeamsList(teams: [])
+                            completion(decodedArray.self,nil)
+                        }
+                        if let error = error {
+                           completion(nil, error)
+                        }
+                    }.resume()
+                }
+    }
+    
     func fetchLatest(endPoint: String, completion: @escaping ((EventsList?, Error?) -> Void)) {
         if let  url = URL(string: UrlServices(endPoint: endPoint).url) {
                     URLSession.shared.dataTask(with: url) { data, response, error in

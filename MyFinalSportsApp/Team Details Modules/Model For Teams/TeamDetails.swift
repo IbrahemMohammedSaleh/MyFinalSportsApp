@@ -6,3 +6,6 @@
 //
 
 import Foundation
+struct TeamDetails: Codable {
+    let teamDetails: [Team]
+}

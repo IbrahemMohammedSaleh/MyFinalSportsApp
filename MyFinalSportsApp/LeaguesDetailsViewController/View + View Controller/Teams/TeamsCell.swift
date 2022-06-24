@@ -14,17 +14,12 @@ class TeamsCell: UICollectionViewCell {
     func configureCell(with team: Team) {
 //        labelLeagueViewCell.text = country.strLeague
         
-        let urlImag = NSURL(string: (team.strTeamLogo ?? ""))
+        let urlImag = NSURL(string: (team.strTeamBadge ?? ""))
             let imagedata = NSData.init(contentsOf: urlImag! as URL)
         if imagedata != nil {
-     
+        
             teamsImage.image = UIImage(data: imagedata! as Data)
-            
-//            teamsImage.layer.cornerRadius = 20
-//            teamsImage.clipsToBounds = true
-//            teamsImage.layer.masksToBounds = true
-//            teamsImage.layer.cornerRadius = 20
-//
+
             teamsImage.layer.borderWidth = 1
             teamsImage.layer.masksToBounds = false
             
