@@ -8,6 +8,7 @@
 import UIKit
 
 class MainViewController: UIViewController {
+    
     var sportsArray = [Sport]()
 
     @IBOutlet weak var mainViewCollectionView: UICollectionView! 
@@ -18,11 +19,12 @@ class MainViewController: UIViewController {
         
         mainViewCollectionView.dataSource = self
         mainViewCollectionView.delegate   = self
-     //   mainViewCollectionView.collectionViewLayout = UICollectionViewFlowLayout()
+
+        
         
         let mainPresenter: IMainPresenter = MainPresenter(iMainView: self) // 1
         mainPresenter.fetchData()
-        
+       
     }
     
 }
@@ -50,8 +52,7 @@ extension MainViewController: UICollectionViewDelegate  {
         if let leaguesVC = storyboard?.instantiateViewController(withIdentifier: "LeaguesVC") as? LeagueTableViewController {
             
             leaguesVC.fetchSportNameToLeagueVC = sportsArray[indexPath.row].strSport
-            
-            
+    
             self.navigationController?.pushViewController(leaguesVC , animated: true)
         }
       
@@ -60,14 +61,9 @@ extension MainViewController: UICollectionViewDelegate  {
         
     }
     
-    
-
-
-
 extension MainViewController: UICollectionViewDelegateFlowLayout  {
 
 }
-
 
 
 extension MainViewController: IMainView {

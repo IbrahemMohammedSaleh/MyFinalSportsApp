@@ -12,10 +12,7 @@ class MainViewCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var imageContainer: UIView!
     @IBOutlet weak var sportName: UILabel!
     @IBOutlet weak var sportImage: UIImageView!
-//    
-//    override class func awakeFromNib() {
-//        configView()
-//    }
+
     
    
     func configureCell(with sport: Sport) {

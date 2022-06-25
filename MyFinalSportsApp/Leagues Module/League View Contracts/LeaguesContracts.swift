@@ -21,12 +21,3 @@ protocol ILeaguesPresenter {  // For Presenter
 protocol ILeaguesModel { // For Model
     func fetchDataFromApi()
 }
-//protocol ILeaguesView { // For home View
-//    func renderLeagueDetailsView(leagues: AllLeagues)
-//    func postErrorLeagueDetailsView(error: Error)
-//}
-//protocol ILeaguesPresenter {  // For Presenter
-//    func fetchData(endPoint: String)
-//    func onSuccess(leagues: AllLeagues)
-//    func onFail(error: Error)
-//}

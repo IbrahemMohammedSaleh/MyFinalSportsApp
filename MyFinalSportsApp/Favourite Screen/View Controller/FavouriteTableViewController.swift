@@ -9,6 +9,7 @@ import UIKit
 import Network
 import SDWebImage
 import Reachability
+import CoreData
 
 class FavouriteTableViewController: UITableViewController {
   
@@ -18,26 +19,24 @@ class FavouriteTableViewController: UITableViewController {
     var leaguesListFromData : [FavouriteLeagueTable] = []
     var fetchleagueNameToFavouriteVC = ""
     
-   
+  
     @IBOutlet var favTableView: UITableView!
     
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+   
         favTableView.dataSource = self
         favTableView.delegate  = self
 
 
         let leaguesForFavourtiePresenter: ILeaguesForFavouritePresenter = LeaguesForFavouritePresenter(iLeaguesForFavouriteView: self)
         leaguesForFavourtiePresenter.fetchData()
-        
-  
+   
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
-        
         for item in leaguesList {
             
             if item.strLeague == "fetchleagueNameToFavouriteVC" {
@@ -45,7 +44,7 @@ class FavouriteTableViewController: UITableViewController {
                 leaguesListFromData.append(item)
             }
         }
-        
+       
         leaguesListFromData = DBManager.sharedInstance.fetchLeagues(appDelegate: appDelegate)
                
               self.favTableView.reloadData()
@@ -55,35 +54,14 @@ class FavouriteTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-   
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-       
-        
+ 
         return leaguesListFromData.count
-//
-//        if networkCheck.currentStatus == .satisfied {
-//            return leaguesList.count
-//        }else {
-//
-//            return leaguesListFromData.count
-//
-//        }
-        
+
     }
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        
-      
-//
-//        if editingStyle == .delete {
-//            let commit = leaguesListFromData[indexPath.row]
-//            container.viewContext.delete(commit)
-//            leaguesListFromData.remove(at: indexPath.row)
-//            favTableView.deleteRows(at: [indexPath], with: .fade)
-//
-//            saveContext()
-//        }
-    }
+    
+
     //MARK: - Animation
 //    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
 //        cell.alpha = 0
@@ -98,42 +76,41 @@ class FavouriteTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FavouriteTableViewCell", for: indexPath) as! FavouriteTableViewCell
 
- 
       let leagueFromData = leaguesListFromData[indexPath.row]
-      
+   
+        cell.favCellImage.sd_setImage(with: URL(string:leagueFromData.strBadge! ), placeholderImage: UIImage(named: "12.png"))
         
-        cell.favCellImage.sd_setImage(with: URL(string:leagueFromData.strBadge! ), placeholderImage: UIImage(named: "R2.png"))
- 
-    
-      
-        cell.configureFavouriteCellWithNetwork(with: leagueFromData)
+         cell.configureFavouriteCellWithNetwork(with: leagueFromData)
 
-  
-//
-//        }
+
         networkCheck.addObserver(observer: self)
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-     
+    
+
+    tableView.deselectRow(at: indexPath, animated: true)
+       
         
         if networkCheck.currentStatus == .satisfied {
-            
+            print("YOU ARE ONLINE")
             DispatchQueue.main.async {
                 
-                let leaguesDetails = self.storyboard?.instantiateViewController(withIdentifier: "LeaguesDetailsVC") as! LeaguesDetailsVC
-                 
-                let league = self.leaguesList[indexPath.row]
+                let toLeagueDetails = self.storyboard?.instantiateViewController(identifier: "LeaguesDetailsVC") as! LeaguesDetailsVC
                 
                 
+                toLeagueDetails.modalPresentationStyle = .fullScreen
+
+
+                toLeagueDetails.fetchTeamsToLeagueDetails = self.leaguesListFromData[indexPath.row].strLeague
+
                 
-//                leaguesDetails.fetchTeamsToLeagueDetails = league.strLeague
-//                leaguesDetails.titleD = league.strLeague
+                self.present(toLeagueDetails, animated: true, completion: nil)
 
             }
-       
+
 
         }else{
             print("no internet")
@@ -141,26 +118,42 @@ class FavouriteTableViewController: UITableViewController {
                 let alert : UIAlertController = UIAlertController(title: "ERROR", message: "Please check your internet connection", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .destructive, handler: nil))
                 self.present(alert , animated: true , completion: nil)
-                            
+
                 }
     }
-    }
-
-    @IBAction func clearBtnPressed(_ sender: Any) {
-
     }
 }
  
 
+extension FavouriteTableViewController: ILeaguesForFavouriteView {
+    func renderLeaguesForFavouriteView(countries: AllLeagueByStrSport) {
+       // leaguesList = countries.countries
+        DispatchQueue.main.async {
+            self.favTableView.reloadData()
+        }
+    }
+    
+    func postErrorLeaguesForFavouriteView(error: Error) {
+        print(error.localizedDescription)
+    }
+}
+// MARK: - Func check network
+
+extension FavouriteTableViewController {
+func showalert(){
+    let alert = UIAlertController(title: "Alert", message: "You are Not connect to Network ", preferredStyle: .alert)
+    alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
+    self.present(alert, animated: true, completion: nil)
+    
+    }
+}
 
 
 
 extension FavouriteTableViewController : NetworkCheckObserver{
     func statusDidChange(status: NWPath.Status) {
         if status == .satisfied {
-            //Do something
-            
-            
+  
             print("\n //Do something \n")
         }else if status == .unsatisfied {
             
@@ -175,52 +168,5 @@ extension FavouriteTableViewController : NetworkCheckObserver{
     
             
         }
-    }
-}
-
-
-extension FavouriteTableViewController: ILeaguesForFavouriteView {
-    func renderLeaguesForFavouriteView(countries: AllLeagueByStrSport) {
-       // leaguesList = countries.countries
-        DispatchQueue.main.async {
-            self.favTableView.reloadData()
-        }
-    }
-    
-    func postErrorLeaguesForFavouriteView(error: Error) {
-        print(error.localizedDescription)
-    }
-}
-extension FavouriteTableViewController {
-func showalert(){
-    let alert = UIAlertController(title: "Alert", message: "You are Not connect to Network ", preferredStyle: .alert)
-    alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
-    self.present(alert, animated: true, completion: nil)
-    
-    }
-}
-
-// MARK: - Func check network
-extension FavouriteTableViewController {
-    
-    
-    func monitorNetwork(){
-        let monitor = NWPathMonitor()
-        monitor.pathUpdateHandler = { path in
-            if path.status == .satisfied {
-                DispatchQueue.main.async { [self] in
-                    print("internet Connected")
-                    favTableView.reloadData()
-                    
-                }
-            } else {
-                DispatchQueue.main.async { [self] in
-                showalert()
-                    favTableView.reloadData()
-                }
-            }
-        }
-        let queue = DispatchQueue(label: "Network")
-        monitor.start(queue: queue)
     }
 }

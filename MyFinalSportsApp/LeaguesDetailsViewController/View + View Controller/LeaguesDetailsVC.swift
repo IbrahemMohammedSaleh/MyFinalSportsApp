@@ -18,13 +18,13 @@ class LeaguesDetailsVC: UIViewController {
     @IBOutlet weak var upcomingCollectionView: UICollectionView!
     @IBOutlet weak var screenTitle: UINavigationItem!
   
-    var stockTeamsArray = [Team]()
+    var baseTeamsArray = [Team]()
     var newTeamArray = [Team]()
     
-    var stockUpcomingArray = [Event]()
+    var baseUpcomingArray = [Event]()
     var newUpcomingArray = [Event]()
     
-    var stockLatestArray = [Event]()
+    var baseLatestArray = [Event]()
     var newLatestArray = [Event]()
     
     var titleD = ""
@@ -43,21 +43,21 @@ class LeaguesDetailsVC: UIViewController {
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     override func viewWillAppear(_ animated: Bool) {
-        for item in stockTeamsArray {
+        for item in baseTeamsArray {
 
             if item.strLeague == fetchTeamsToLeagueDetails {
                 
                 newTeamArray.append(item)
             }
         }
-        for item2 in stockUpcomingArray {
+        for item2 in baseUpcomingArray {
 
             if item2.strLeague == fetchTeamsToLeagueDetails {
                 
                 newUpcomingArray.append(item2)
             }
         }
-        for item3 in stockLatestArray {
+        for item3 in baseLatestArray {
 
             if item3.strLeague == fetchTeamsToLeagueDetails {
                 

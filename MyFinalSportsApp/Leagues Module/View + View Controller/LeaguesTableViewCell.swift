@@ -58,6 +58,3 @@ class LeaguesTableViewCell: UITableViewCell {
             }
     }
 
-//protocol WebViewController {
-//    func onClickButton(index : Int)
-//}

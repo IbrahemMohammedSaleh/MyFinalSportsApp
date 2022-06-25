@@ -9,7 +9,7 @@
     </entity>
     <entity name="StableTable" representedClassName="StableTable" syncable="YES" codeGenerationType="class"/>
     <elements>
-        <element name="FavouriteLeagueTable" positionX="-63" positionY="-18" width="128" height="104"/>
         <element name="StableTable" positionX="-54" positionY="0" width="128" height="29"/>
+        <element name="FavouriteLeagueTable" positionX="-45" positionY="-27" width="128" height="104"/>
     </elements>
 </model>

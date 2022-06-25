@@ -6,17 +6,17 @@
 //
 
 import Foundation
-protocol ILeaguesForFavouriteView { // For home View
+protocol ILeaguesForFavouriteView {
     func renderLeaguesForFavouriteView(countries: AllLeagueByStrSport)
     func postErrorLeaguesForFavouriteView(error: Error)
 }
 
-protocol ILeaguesForFavouritePresenter {  // For Presenter
+protocol ILeaguesForFavouritePresenter {
     func fetchData()
     func onSuccess(countries: AllLeagueByStrSport)
     func onFail(error: Error)
 }
 
-protocol ILeaguesForFavouriteModel { // For Model
+protocol ILeaguesForFavouriteModel { 
     func fetchDataFromApi()
 }

@@ -16,9 +16,7 @@ class LeaguesModelController: ILeaguesModel {
         self.iLeaguesPresenter = iLeaguesPresenter
     }
     
-    
-    
-    
+ 
     func fetchDataFromApi() {
         apiServiceForLeagues.fetchLeagues() { countries, error in
             if let countries = countries {

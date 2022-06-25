@@ -9,7 +9,7 @@ import Foundation
 class LeaguesForFavouriteModelController: ILeaguesForFavouriteModel {
     
     let apiServiceForLeaguesForFavourite: ApiServiceForFavouriteLeagues = NetworkManager()
-   // ApiServiceForLeagues = NetworkManager()
+ 
     
     
     let iLeaguesForFavouritePresenter: ILeaguesForFavouritePresenter

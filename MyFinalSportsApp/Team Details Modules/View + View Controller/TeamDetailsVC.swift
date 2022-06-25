@@ -20,7 +20,7 @@ class TeamDetailsVC: UIViewController {
     @IBOutlet weak var sportsName: UILabel!
     @IBOutlet weak var teamBadge: UIImageView!
    
-    var db = DBManager.sharedInstance
+  //  var db = DBManager.sharedInstance
     var stockTeamDetails = [Team]()
     var newTeamDetails = [Team]()
     var fetchTeamsToTeamDetails: String?

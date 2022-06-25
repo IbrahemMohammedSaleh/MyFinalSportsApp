@@ -1,12 +1,12 @@
+////
+////  CoreDataManager.swift
+////  MyFinalSportsApp
+////
+////  Created by Ibrahem's on 23/06/2022.
+////
 //
-//  CoreDataManager.swift
-//  MyFinalSportsApp
 //
-//  Created by Ibrahem's on 23/06/2022.
 //
-
-
-
 import Foundation
 import CoreData
 
@@ -25,9 +25,9 @@ class DBManager{
 
 extension DBManager{
     func add(appDelegate: AppDelegate, idLeague: String, strLeague: String, strSport: String, strBadge:String, strYoutube: String){
-        
+
         let manageContext = appDelegate.persistentContainer.viewContext
-        
+
         if let entity = NSEntityDescription.entity(forEntityName: "FavouriteLeagueTable", in: manageContext){
             let favouriteLeague = NSManagedObject(entity: entity, insertInto: manageContext)
             favouriteLeague.setValue(idLeague, forKey: "idLeague")
@@ -35,7 +35,7 @@ extension DBManager{
             favouriteLeague.setValue(strSport, forKey: "strSport")
             favouriteLeague.setValue(strBadge, forKey: "strBadge")
             favouriteLeague.setValue(strYoutube, forKey: "strYoutube")
-         
+
 
             do {
                 try manageContext.save()
@@ -45,13 +45,13 @@ extension DBManager{
             }
         }
     }
-    
+
     func fetchLeagues(appDelegate: AppDelegate) -> [FavouriteLeagueTable]{
-        
+
         var fetchLeagues: [FavouriteLeagueTable] = []
         let managedContext = appDelegate.persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "FavouriteLeagueTable")
-        
+
 //        let predicate = NSPredicate(format: "title == %@", "")
 //        fetchRequest.predicate = predicate
         do{
@@ -63,11 +63,11 @@ extension DBManager{
 
         return fetchLeagues
     }
-    
-    
-    
+
+
+
     func delete(favouriteLeague:FavouriteLeagueTable, indexPath: IndexPath, appDelegate: AppDelegate, delegate: DeletionDelegate){
-     
+
 
         let managedContext = appDelegate.persistentContainer.viewContext
         managedContext.delete(favouriteLeague)
@@ -78,7 +78,10 @@ extension DBManager{
             print("Error in saving")
             print(error.localizedDescription)
         }
-        
+
     }
-    
+
 }
+/*
+
+ */

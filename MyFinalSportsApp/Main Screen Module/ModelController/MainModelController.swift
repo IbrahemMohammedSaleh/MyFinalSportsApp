@@ -7,8 +7,8 @@
 
 import Foundation
 
-////bridge of passing data from model controller to presenter
-//
+
+
 class MainModelController: IMainModel {
     
     let apiServiceForSportsList: ApiServiceForSportsList = NetworkManager()
@@ -18,7 +18,6 @@ class MainModelController: IMainModel {
         self.iMainPresenter = iMainPresenter
     }
     
-    //Calling data from network and passing it to presenter
     
     func fetchDataFromApi() {    // 3
         apiServiceForSportsList.fetchSportsList() { sports, error in
