@@ -20,7 +20,7 @@ class TeamDetailsVC: UIViewController {
     @IBOutlet weak var sportsName: UILabel!
     @IBOutlet weak var teamBadge: UIImageView!
    
-  //  var db = DBManager.sharedInstance
+
     var stockTeamDetails = [Team]()
     var newTeamDetails = [Team]()
     var fetchTeamsToTeamDetails: String?
@@ -31,12 +31,7 @@ class TeamDetailsVC: UIViewController {
     var leagueNameTD = ""
     var temaNameTD = ""
     var stadiumNameTD = ""
-  /*
-    var instagramLinkTD = ""
-    var facebookLinkTD = ""
-    var youtubeLinkTD = ""
-    var twitterLinkTD = ""
-   */
+
     override func viewWillAppear(_ animated: Bool) {
         for item in stockTeamDetails {
 
@@ -50,21 +45,18 @@ class TeamDetailsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
        
-       
         sportsName.text = sportsNameTD
         stadiumName.text = stadiumNameTD
-      
         teamName.text = temaNameTD
-        
         teamBadge.image = UIImage(named: "\(teamBadgeTD)")
-        
+     
         configureCell()
 
        
         }
         
     func configureCell() {
-//        labelLeagueViewCell.text = country.strLeague
+
         
         let urlImage = NSURL(string: teamBadgeTD)
             let imageData = NSData.init(contentsOf: urlImage! as URL)
@@ -72,39 +64,11 @@ class TeamDetailsVC: UIViewController {
             teamBadge.image = UIImage(data: imageData! as Data)
         }
     
-    
-    
-    
-        //teamJersey.attributedText = NSAttributedString(
-        /*struct MyStruct {
-         var age: Int
-         var name: String
-       }
-         let index = myArray.index(where: { $0.name == "Smith" })
-         if let name = selection?.name {
-             if let location = myArray.index(where: { $0.name == name }) {
-                 // you know that location is not nil here
-             }
-         }
-         */
-
-       
-        
-//        let teamDetailsPresenter: ITeamDetailsPresenter = TeamDetailsPresenter(iTeamDetailsView: self)
-//        teamDetailsPresenter.fetchData(endPoint: "search_all_teams.php?l=English%20Premier%20League")
-//
-        
-//        let teamsPtesenter: ITeamsPresenter = TeamsPresenter(iTeamsView: self)
-//        teamsPtesenter.fetchData(endPoint: "search_all_teams.php?l=English%20Premier%20League")
-        
-        
-
+  
 }
 
     @IBAction func backToDetailsBtnPressed(_ sender: UIBarButtonItem) {
-        
-        
-     
+  
         self.dismiss(animated: true, completion: nil)
     }
     

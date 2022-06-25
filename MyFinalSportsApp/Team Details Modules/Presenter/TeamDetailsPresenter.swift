@@ -17,16 +17,9 @@ class TeamDetailsPresenter: ITeamDetailsPresenter {
     init(iTeamDetailsView: ITeamDetailsView) {
         self.iTeamDetailsView = iTeamDetailsView
     }
-    
-    
-    
-//    func onSuccess(teams: TeamDetails) {
-//        iTeamDetailsView.renderTeamDetailsView(teams: teams)
-//    }
- 
-    
+
     func fetchData() {
-        // telling him that iam respobsible of implementing the methods you will call 222
+        //
        
         let teamDetailModel = TeamDetailsModelController(iTeamDetailsPresenter: self)
         teamDetailModel.fetchDataFromApi()

@@ -47,7 +47,7 @@
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sport Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Mz-8G-qqb">
                                                             <rect key="frame" x="2" y="0.0" width="192" height="50"/>
-                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                            <fontDescription key="fontDescription" name="nevis-Bold" family="nevis" pointSize="20"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -177,7 +177,7 @@
                     </view>
                     <connections>
                         <outlet property="tableViewLeagues" destination="LlQ-DR-Wik" id="2SP-fS-gMV"/>
-                        <segue destination="4fb-H6-PbU" kind="presentation" modalPresentationStyle="fullScreen" id="3DQ-02-US7"/>
+                        <segue destination="4fb-H6-PbU" kind="presentation" identifier="goToLeagueDetailsView" modalPresentationStyle="fullScreen" id="3DQ-02-US7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d9I-NI-xFO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -257,7 +257,7 @@
                                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="182" id="gMi-I1-1nj"/>
                                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="84" id="kK4-jo-CFy"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                            <fontDescription key="fontDescription" name="nevis-Bold" family="nevis" pointSize="18"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -338,7 +338,7 @@
                                         <rect key="frame" x="8" y="0.0" width="406" height="1242"/>
                                         <subviews>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="OcW-Di-d4g">
-                                                <rect key="frame" x="2" y="55.5" width="396" height="238"/>
+                                                <rect key="frame" x="2" y="54" width="396" height="238"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="238" id="G8i-k9-IGf"/>
@@ -365,23 +365,23 @@
                                                                     </constraints>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x8m-sL-aqK">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="394" height="24"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="394" height="22.5"/>
                                                                     <color key="backgroundColor" systemColor="separatorColor"/>
-                                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                                    <fontDescription key="fontDescription" name="nevis-Bold" family="nevis" pointSize="20"/>
                                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F7f-PF-YFe">
-                                                                    <rect key="frame" x="-1" y="161.5" width="394" height="25.5"/>
+                                                                    <rect key="frame" x="-1" y="160" width="394" height="23.5"/>
                                                                     <color key="backgroundColor" systemColor="separatorColor"/>
-                                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
+                                                                    <fontDescription key="fontDescription" name="nevis-Bold" family="nevis" pointSize="21"/>
                                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WfB-6Y-xY6">
-                                                                    <rect key="frame" x="-1" y="192.5" width="394" height="25.5"/>
+                                                                    <rect key="frame" x="-1" y="189" width="394" height="23.5"/>
                                                                     <color key="backgroundColor" systemColor="separatorColor"/>
-                                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
+                                                                    <fontDescription key="fontDescription" name="nevis-Bold" family="nevis" pointSize="21"/>
                                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
@@ -414,7 +414,7 @@
                                                 </cells>
                                             </collectionView>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="DUu-Um-vYB">
-                                                <rect key="frame" x="-9" y="347.5" width="407" height="631"/>
+                                                <rect key="frame" x="-9" y="344.5" width="407" height="631"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="631" id="HtM-Ta-c8o"/>
@@ -448,7 +448,7 @@
                                                                         <constraint firstAttribute="width" constant="118" id="MLM-Pn-dVK"/>
                                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="118" id="lhn-WV-iM3"/>
                                                                     </constraints>
-                                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                                    <fontDescription key="fontDescription" name="nevis-Bold" family="nevis" pointSize="20"/>
                                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
@@ -459,27 +459,27 @@
                                                                         <constraint firstAttribute="height" constant="24" id="1oo-j4-jI6"/>
                                                                         <constraint firstAttribute="width" constant="51.5" id="iKX-aB-O9T"/>
                                                                     </constraints>
-                                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                                    <fontDescription key="fontDescription" name="nevis-Bold" family="nevis" pointSize="20"/>
                                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="gfmgmfgmfgmmghmmmmfgmfgmfgmghmdfbnm" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ez5-z5-1RG">
-                                                                    <rect key="frame" x="265" y="239.5" width="118" height="14.5"/>
+                                                                    <rect key="frame" x="265" y="240.5" width="118" height="13.5"/>
                                                                     <color key="backgroundColor" systemColor="separatorColor"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="118" id="ADf-WT-gME"/>
                                                                     </constraints>
-                                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                                    <fontDescription key="fontDescription" name="nevis-Bold" family="nevis" pointSize="20"/>
                                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8HF-Bp-07A" userLabel="MatchTime ">
-                                                                    <rect key="frame" x="297" y="33" width="86" height="32.5"/>
+                                                                    <rect key="frame" x="297" y="33" width="86" height="33.5"/>
                                                                     <color key="backgroundColor" systemColor="separatorColor"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="qU0-jb-CXB"/>
                                                                     </constraints>
-                                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                                    <fontDescription key="fontDescription" name="nevis-Bold" family="nevis" pointSize="20"/>
                                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
@@ -490,7 +490,7 @@
                                                                         <constraint firstAttribute="width" constant="133" id="KUA-Mq-hzl"/>
                                                                         <constraint firstAttribute="height" constant="24" id="sa9-Jw-frG"/>
                                                                     </constraints>
-                                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                                    <fontDescription key="fontDescription" name="nevis-Bold" family="nevis" pointSize="20"/>
                                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
@@ -531,7 +531,7 @@
                                                 </cells>
                                             </collectionView>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="IzF-RX-EdL">
-                                                <rect key="frame" x="-9" y="1047.5" width="407" height="187"/>
+                                                <rect key="frame" x="-9" y="1044.5" width="407" height="187"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="187" id="vVv-TU-uVx"/>
@@ -585,23 +585,23 @@
                                                 </cells>
                                             </collectionView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Teams" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8cH-yu-NWd">
-                                                <rect key="frame" x="8" y="999" width="76" height="40"/>
+                                                <rect key="frame" x="8" y="996" width="76" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="76" id="cD8-Or-iUH"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                                                <fontDescription key="fontDescription" name="nevis-Bold" family="nevis" pointSize="19"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="UpComing Events " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tw6-hp-IYI">
-                                                <rect key="frame" x="8" y="19" width="165.5" height="23"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                                                <rect key="frame" x="8" y="19" width="167.5" height="21.5"/>
+                                                <fontDescription key="fontDescription" name="nevis-Bold" family="nevis" pointSize="19"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Latest Events" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MCl-tr-hcp">
-                                                <rect key="frame" x="8" y="301.5" width="123" height="23"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                                                <rect key="frame" x="8" y="300" width="124" height="21.5"/>
+                                                <fontDescription key="fontDescription" name="nevis-Bold" family="nevis" pointSize="19"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -661,7 +661,7 @@
                         <outlet property="screenTitle" destination="3Xu-lC-Rqc" id="0u4-VX-r9h"/>
                         <outlet property="teamsCollectionView" destination="IzF-RX-EdL" id="R8z-9e-4iw"/>
                         <outlet property="upcomingCollectionView" destination="OcW-Di-d4g" id="snI-za-NG1"/>
-                        <segue destination="n1G-gl-ZNP" kind="presentation" modalPresentationStyle="fullScreen" id="yMK-3E-v8n"/>
+                        <segue destination="n1G-gl-ZNP" kind="presentation" identifier="goToTeamDetailsView" modalPresentationStyle="fullScreen" id="yMK-3E-v8n"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Pb-Vy-s6l" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

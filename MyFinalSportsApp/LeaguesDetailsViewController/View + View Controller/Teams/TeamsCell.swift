@@ -12,8 +12,7 @@ class TeamsCell: UICollectionViewCell {
     @IBOutlet weak var teamsImage: UIImageView!
     
     func configureCell(with team: Team) {
-//        labelLeagueViewCell.text = country.strLeague
-        
+  
         let urlImag = NSURL(string: (team.strTeamBadge ?? ""))
             let imagedata = NSData.init(contentsOf: urlImag! as URL)
         if imagedata != nil {

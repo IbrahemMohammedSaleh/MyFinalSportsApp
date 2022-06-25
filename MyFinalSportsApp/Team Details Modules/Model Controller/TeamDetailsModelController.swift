@@ -8,8 +8,6 @@
 import Foundation
 class TeamDetailsModelController: ITeamDetailsModel {
    
-
-    
     let apiServiceForTeamDetails: ApiServiceForTeamDetails = NetworkManager()
     let iTeamDetailsPresenter: ITeamDetailsPresenter
     

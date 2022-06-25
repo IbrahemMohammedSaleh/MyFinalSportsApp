@@ -27,8 +27,5 @@ class EventsPresenter: IEventsPresenter {
     func onFail(error: Error) {
         iEventsView.postEventsView(error: error)
     }
-    
-    
-    
-    
+  
 }

@@ -65,13 +65,8 @@ class LeaguesDetailsVC: UIViewController {
             }
         }
         
-        
-     
-
     }
 
-
-    
     override func viewDidLoad() {
         super.viewDidLoad()
     
@@ -112,8 +107,7 @@ class LeaguesDetailsVC: UIViewController {
        
         if(isClicked == false){
             self.favouriteBtnOutlet.tintColor = UIColor.red
-            
-      
+  
             db.add(appDelegate: appDelegate, idLeague: "", strLeague: strLeagueFav, strSport: "", strBadge: leagueBadgeFav, strYoutube: strYoutubeFav)
    
             isClicked = true
@@ -132,6 +126,131 @@ class LeaguesDetailsVC: UIViewController {
     }
     
 }
+
+//MARK: - Extension For configure Collections
+
+extension LeaguesDetailsVC : UICollectionViewDataSource,UICollectionViewDelegate ,UICollectionViewDelegateFlowLayout{
+    
+    
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+      
+        var numberOfItems = 0
+
+        if collectionView == latestResultsCollectionView {
+            numberOfItems = newLatestArray
+                .count
+        }
+        else if collectionView == upcomingCollectionView {
+            numberOfItems = newUpcomingArray.count
+        }
+        else if  collectionView == teamsCollectionView {
+            numberOfItems = newTeamArray.count
+        }
+
+        return numberOfItems
+    }
+    
+    
+    //MARK: - Cell For row for Upcoming Collection
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+  
+        if (collectionView == upcomingCollectionView)
+        {
+            
+        
+        
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "upcomingCollectionViewCell", for: indexPath) as! upcomingCollectionViewCell
+            
+
+            cell.configureCell(with: newUpcomingArray[indexPath.row])
+            
+            return cell
+            }
+        
+            
+        //MARK: - Cell For row for Latest Collection
+        
+        else if (collectionView == latestResultsCollectionView)
+        {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LastestCollectionViewCell", for: indexPath) as!  LastestCollectionViewCell
+            
+
+           cell.configureCell(with: newLatestArray[indexPath.row])
+           
+
+            return cell
+
+        }
+        
+        //MARK: - Cell For row for Teams Collection
+        
+        else if(collectionView == teamsCollectionView) {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TeamsCell", for: indexPath)  as! TeamsCell
+    
+            cell.configureCell(with: newTeamArray[indexPath.row])
+
+            return cell
+        }
+        return UICollectionViewCell()
+    }
+
+    //MARK: - Did select row for Teams Collection
+    
+    
+      func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+          
+          if(collectionView == teamsCollectionView) {
+          let teamScreen = self.storyboard?.instantiateViewController(withIdentifier: "TeamDetailsVC") as! TeamDetailsVC
+             
+              teamScreen.stadiumNameTD = newTeamArray[indexPath.row].strStadium ?? ""
+              teamScreen.sportsNameTD = newTeamArray[indexPath.row].strSport 
+              teamScreen.leagueNameTD = newTeamArray[indexPath.row].strLeague
+              teamScreen.temaNameTD = newTeamArray[indexPath.row].strTeam 
+              teamScreen.teamBadgeTD = newTeamArray[indexPath.row].strTeamBadge
+              teamScreen.sportsNameTD = newTeamArray[indexPath.row].strSport
+              teamScreen.fetchTeamsToTeamDetails = newTeamArray[indexPath.row].strTeamBadge
+
+              teamScreen.modalPresentationStyle = .fullScreen
+              self.present(teamScreen, animated: true, completion: nil)
+           
+          
+ 
+    }
+
+      }
+
+    //MARK: - Animation
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+
+        if (collectionView == upcomingCollectionView) {
+            cell.alpha = 0
+                    let transform = CATransform3DTranslate(CATransform3DIdentity, 0, -250, 0)
+                    cell.layer.transform = transform
+                    UICollectionView.animate(withDuration: 0.8) {
+                        cell.alpha = 1
+                        cell.layer.transform = CATransform3DIdentity
+        }
+        }
+        else if (collectionView == latestResultsCollectionView) {
+            cell.alpha = 0
+                    let transform = CATransform3DTranslate(CATransform3DIdentity, 0, 0, -250)
+                    cell.layer.transform = transform
+            UICollectionView.animate(withDuration: 0.8) {
+                        cell.alpha = 1
+                        cell.layer.transform = CATransform3DIdentity
+        }
+        }
+
+        
+        
+}
+    
+    
+}
+
 //MARK: - Rendering  Collections
 
 
@@ -186,106 +305,3 @@ extension LeaguesDetailsVC: ILatestView {
         print(error.localizedDescription)
     }
 }
-
-
-//MARK: - Extension For configure Collections
-
-extension LeaguesDetailsVC : UICollectionViewDataSource,UICollectionViewDelegate ,UICollectionViewDelegateFlowLayout{
-
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-      
-        var numberOfItems = 0
-
-        if collectionView == latestResultsCollectionView {
-            numberOfItems = newLatestArray
-                .count
-        }
-        else if collectionView == upcomingCollectionView {
-            numberOfItems = newUpcomingArray.count
-        }
-        else if  collectionView == teamsCollectionView {
-            numberOfItems = newTeamArray.count
-        }
-
-        return numberOfItems
-    }
-    
-    
-    //MARK: - Cell For row for Upcoming Collection
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-  
-        if (collectionView == upcomingCollectionView)
-        {
-        
-        
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "upcomingCollectionViewCell", for: indexPath) as! upcomingCollectionViewCell
-            
-
-            cell.configureCell(with: newUpcomingArray[indexPath.row])
-            
-            return cell
-            }
-            
-        //MARK: - Cell For row for Latest Collection
-        
-        else if (collectionView == latestResultsCollectionView)
-        {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LastestCollectionViewCell", for: indexPath) as!  LastestCollectionViewCell
-            
-
-           cell.configureCell(with: newLatestArray[indexPath.row])
-           
-
-            return cell
-
-        }
-        
-        //MARK: - Cell For row for Teams Collection
-        
-        else if(collectionView == teamsCollectionView) {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TeamsCell", for: indexPath)  as! TeamsCell
-    
-            cell.configureCell(with: newTeamArray[indexPath.row])
-
-            return cell
-
-        }
-
-        return UICollectionViewCell()
-    }
-    
-    
-    //MARK: - Did select row for Teams Collection
-    
-    
-      func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-          
-          if(collectionView == teamsCollectionView) {
-          let teamScreen = self.storyboard?.instantiateViewController(withIdentifier: "TeamDetailsVC") as! TeamDetailsVC
-             
-              teamScreen.stadiumNameTD = newTeamArray[indexPath.row].strStadium ?? ""
-              teamScreen.sportsNameTD = newTeamArray[indexPath.row].strSport 
-              teamScreen.leagueNameTD = newTeamArray[indexPath.row].strLeague
-              teamScreen.temaNameTD = newTeamArray[indexPath.row].strTeam 
-              teamScreen.teamBadgeTD = newTeamArray[indexPath.row].strTeamBadge
-              teamScreen.sportsNameTD = newTeamArray[indexPath.row].strSport
-              teamScreen.fetchTeamsToTeamDetails = newTeamArray[indexPath.row].strTeamBadge
-
-              teamScreen.modalPresentationStyle = .fullScreen
-              self.present(teamScreen, animated: true, completion: nil)
-           
-          
- 
-    }
-
-      }
-
-
-//}
-
-
-
-}
-

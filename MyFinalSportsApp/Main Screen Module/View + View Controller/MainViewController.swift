@@ -58,13 +58,25 @@ extension MainViewController: UICollectionViewDelegate  {
       
  
         }
+    
+    
         
     }
-    
+//MARK: - Animation
 extension MainViewController: UICollectionViewDelegateFlowLayout  {
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        cell.alpha = 0
+                let transform = CATransform3DTranslate(CATransform3DIdentity, -250, 0, 0)
+                cell.layer.transform = transform
+                UICollectionView.animate(withDuration: 0.8) {
+                    cell.alpha = 1
+                    cell.layer.transform = CATransform3DIdentity
+    }
 
 }
 
+}
 
 extension MainViewController: IMainView {
 

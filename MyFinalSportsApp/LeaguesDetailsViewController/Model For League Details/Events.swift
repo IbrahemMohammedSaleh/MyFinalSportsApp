@@ -5,10 +5,6 @@
 //  Created by Ibrahem's on 21/06/2022.
 //
 
-// This file was generated from JSON Schema using quicktype, do not modify it directly.
-// To parse the JSON, add this file to your project and do:
-//
-//   let sportsList = try? newJSONDecoder().decode(SportsList.self, from: jsonData)
 
 import Foundation
 

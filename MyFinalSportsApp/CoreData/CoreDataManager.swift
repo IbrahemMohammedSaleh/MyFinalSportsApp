@@ -18,10 +18,6 @@ class DBManager{
     static let sharedInstance = DBManager()
     private init(){}
 }
-/*
- var idLeague,strLeague, strSport, strCurrentSeason, strBadge: String
- var strYoutube, strTwitter, strInstagram, strFaceboo
- */
 
 extension DBManager{
     func add(appDelegate: AppDelegate, idLeague: String, strLeague: String, strSport: String, strBadge:String, strYoutube: String){
@@ -52,8 +48,7 @@ extension DBManager{
         let managedContext = appDelegate.persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "FavouriteLeagueTable")
 
-//        let predicate = NSPredicate(format: "title == %@", "")
-//        fetchRequest.predicate = predicate
+
         do{
             fetchLeagues = try managedContext.fetch(fetchRequest) as! [FavouriteLeagueTable]
         }catch let error as NSError {
@@ -82,6 +77,4 @@ extension DBManager{
     }
 
 }
-/*
 
- */

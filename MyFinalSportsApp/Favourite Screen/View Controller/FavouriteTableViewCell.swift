@@ -27,26 +27,6 @@ class FavouriteTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    
-    func configureFavouriteCellWithoutNetwork(with country: FavouriteLeagueTable) {
-        favLabelCell.text = country.strLeague
-        youtubeFavUrl = country.strYoutube!
-        let urlImag = NSURL(string: (country.strBadge!))
-            let imagedata = NSData.init(contentsOf: urlImag! as URL)
-        if imagedata != nil {
-
-            favCellImage.image = UIImage(data: imagedata! as Data)
-
-            favCellImage.layer.cornerRadius = 20
-            favCellImage.clipsToBounds = true
-            favCellImage.layer.masksToBounds = true
-            favCellImage.layer.cornerRadius = 20
-
-        }
-        
-
-        
-    }
     func configureFavouriteCellWithNetwork(with country: FavouriteLeagueTable) {
         favLabelCell.text = country.strLeague
 

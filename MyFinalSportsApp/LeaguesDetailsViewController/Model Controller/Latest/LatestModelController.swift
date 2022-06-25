@@ -8,9 +8,7 @@
 import Foundation
 
 class LatestModelController: ILatestModel {
-   
-
-    
+  
     let apiServiceForLatest:ApiServiceForLatest = NetworkManager()
     let iLatestPresenter: ILatestPresenter
     
@@ -20,15 +18,7 @@ class LatestModelController: ILatestModel {
     
     
     func fetchDataFromApi() {
-        
-//        apiServiceForLatest.fetchLatest(endPoint: endPoint) { latest, error in
-//            if let latest = latest {
-//                self.iLatestPresenter.onSuccess(latest: latest)
-//            }
-//            if let error = error {
-//                self.iLatestPresenter.onFail(error: error)
-//            }
-//        }
+
         apiServiceForLatest.fetchLatest() { events, error in
             if let events = events {
                 self.iLatestPresenter.onSuccess(events: events)

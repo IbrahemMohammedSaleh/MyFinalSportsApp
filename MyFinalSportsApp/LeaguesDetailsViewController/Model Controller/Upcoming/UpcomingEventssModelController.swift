@@ -9,8 +9,6 @@ import Foundation
 
 class EventsModelController: IEventsModel {
    
-
-    
     let apiServiceForEvents: ApiServiceForEvents = NetworkManager()
     let iEventsPresenter: IEventsPresenter
     

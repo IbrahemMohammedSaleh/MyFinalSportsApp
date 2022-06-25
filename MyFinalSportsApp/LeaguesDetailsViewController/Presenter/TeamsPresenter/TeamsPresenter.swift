@@ -14,13 +14,11 @@ class TeamsPresenter: ITeamsPresenter {
         self.iTeamsView = iTeamsView
     }
     
-    
-    
+
     func onSuccess(teams: TeamsList) {
         iTeamsView.renderTeamsView(teams: teams)
     }
  
-    
     func fetchData() {
         // telling him that iam respobsible of implementing the methods you will call 222
        

@@ -401,7 +401,6 @@
 			isa = PBXGroup;
 			children = (
 				17AFEA27285FBA700008BE0B /* MyFinalSportsApp */,
-				17546CD12862FF8400F496CA /* WebViewController.swift */,
 				17AFEA26285FBA700008BE0B /* Products */,
 				75B516A1DED811E51913EA96 /* Pods */,
 				63E13E349412A0793779743F /* Frameworks */,
@@ -433,6 +432,7 @@
 				17AFEA39285FBA710008BE0B /* Info.plist */,
 				1726D06A2863CCE100A32ADF /* CoreData */,
 				17BFFB662866B79900153BD8 /* Font */,
+				17546CD12862FF8400F496CA /* WebViewController.swift */,
 			);
 			path = MyFinalSportsApp;
 			sourceTree = "<group>";

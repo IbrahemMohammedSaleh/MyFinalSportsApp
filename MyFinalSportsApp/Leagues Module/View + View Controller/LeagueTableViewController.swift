@@ -80,6 +80,16 @@ class LeagueTableViewController: UIViewController, UITableViewDelegate, UITableV
         
         self.present(leagueDetails, animated: true, completion: nil)
     }
+    //MARK: - Animation
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.alpha = 0
+        let transform = CATransform3DTranslate(CATransform3DIdentity, -250, 0, 0)
+        cell.layer.transform = transform
+        UITableView.animate(withDuration: 0.8) {
+            cell.alpha = 1
+            cell.layer.transform = CATransform3DIdentity
+        }
+    }
 
 }
 extension LeagueTableViewController: ILeaguesView {

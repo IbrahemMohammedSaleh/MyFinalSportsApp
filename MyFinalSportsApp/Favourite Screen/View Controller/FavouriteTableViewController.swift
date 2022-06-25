@@ -62,16 +62,16 @@ class FavouriteTableViewController: UITableViewController {
     }
     
 
-    //MARK: - Animation
-//    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-//        cell.alpha = 0
-//        let transform = CATransform3DTranslate(CATransform3DIdentity, -250, 20, 0)
-//        cell.layer.transform = transform
-//        UITableView.animate(withDuration: 2.0) {
-//            cell.alpha = 1
-//            cell.layer.transform = CATransform3DIdentity
-//        }
-//    }
+ 
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.alpha = 0
+        let transform = CATransform3DTranslate(CATransform3DIdentity, -250, 0, 0)
+        cell.layer.transform = transform
+        UITableView.animate(withDuration: 0.8) {
+            cell.alpha = 1
+            cell.layer.transform = CATransform3DIdentity
+        }
+    }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FavouriteTableViewCell", for: indexPath) as! FavouriteTableViewCell
