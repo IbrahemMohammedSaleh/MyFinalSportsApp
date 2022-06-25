@@ -16,3 +16,11 @@ struct UrlServices {
     }
 }
 
+enum EndPoint: String {
+    
+    case teamsEndPoint = "search_all_teams.php?l=English%20Premier%20League"
+    case AlleagueEndPoint = "search_all_leagues.php?s=Soccer"
+    case eventsEndPoint = "eventsseason.php?id=4617"
+    case sportEndPoint = "all_sports.php"
+}
+

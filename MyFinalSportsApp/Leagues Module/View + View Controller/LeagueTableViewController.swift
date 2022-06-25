@@ -12,9 +12,7 @@ class LeagueTableViewController: UIViewController, UITableViewDelegate, UITableV
     
     @IBOutlet weak var tableViewLeagues: UITableView!
     
-    
-    
-    
+
     var fetchSportNameToLeagueVC: String?
     var newLeaguesArray = [LeagueByStrSport]()
     var leaguesArray = [LeagueByStrSport]()
@@ -48,7 +46,7 @@ class LeagueTableViewController: UIViewController, UITableViewDelegate, UITableV
         
   
         let leaguesPresenter: ILeaguesPresenter = LeaguesPresenter(iLeaguesView: self) // 1
-        leaguesPresenter.fetchData(endPoint: "search_all_leagues.php?s=Soccer")
+        leaguesPresenter.fetchData()
         //"all_leagues.php" END PI+OINT FOR ALL LEAGues
         self.title = "Leagues"
      
@@ -102,7 +100,11 @@ class LeagueTableViewController: UIViewController, UITableViewDelegate, UITableV
 
         leagueDetails.fetchTeamsToLeagueDetails = newLeaguesArray[indexPath.row].strLeague
         
-        leagueDetails.titleD = newLeaguesArray[indexPath.row].strLeague
+        //leagueDetails.titleD = newLeaguesArray[indexPath.row].strLeague
+        leagueDetails.leagueBadgeFav = newLeaguesArray[indexPath.row].strBadge
+        leagueDetails.strLeagueFav = newLeaguesArray[indexPath.row].strLeague
+    
+        leagueDetails.strYoutubeFav = newLeaguesArray[indexPath.row].strYoutube ?? "www.youtube.com"
         
         self.present(leagueDetails, animated: true, completion: nil)
     }

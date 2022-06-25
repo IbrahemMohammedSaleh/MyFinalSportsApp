@@ -19,8 +19,8 @@ class LeaguesModelController: ILeaguesModel {
     
     
     
-    func fetchDataFromApi(endPoint: String) {
-        apiServiceForLeagues.fetchLeagues(endPoint: endPoint) { countries, error in
+    func fetchDataFromApi() {
+        apiServiceForLeagues.fetchLeagues() { countries, error in
             if let countries = countries {
                 self.iLeaguesPresenter.onSuccess(countries: countries)
             }

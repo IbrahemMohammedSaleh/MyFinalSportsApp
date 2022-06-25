@@ -1,146 +1,84 @@
-////
-////  CoreDataManager.swift
-////  MyFinalSportsApp
-////
-////  Created by Ibrahem's on 23/06/2022.
-////
 //
+//  CoreDataManager.swift
+//  MyFinalSportsApp
 //
-//import Foundation
-//import CoreData
+//  Created by Ibrahem's on 23/06/2022.
 //
-//protocol fetchLocalData{
-//    func fetchLocalData()  -> [League]
-//}
-//protocol deleteLocalData {
-//    func deleteLocalData(deleted : League)
-//}
-//
-//protocol saveToLocalData {
-//    func setFavLeague(fav: League)
-//}
-//
-//protocol fetchSpecificLeague {
-//    func fetchSpecificLeague(fav: League) -> Bool
-//}
-//class ConnectToCoreData{
-//    //MARK:- CoreData
-//    //2
-//    var viewContext : NSManagedObjectContext = NSManagedObjectContext()
-//    
-//    //3
-//    var entity : NSEntityDescription?
-//
-//    // MARK: fetching
-//    var fetchingDataFromCoreData : [NSManagedObject] = []
-//    var fetchedData : [League] = []
-//    var storedLeague : League?
-//    var app :AppDelegate?
-//    
-//    init(appDelegate : AppDelegate){
-//        self.app = appDelegate
-//        //1 -> AppDelegate
-//        viewContext = appDelegate.persistentContainer.viewContext
-//        
-//        entity = NSEntityDescription.entity(forEntityName: "StableTable", in: viewContext)
-//    }
-//}
-//
-////MARK:- set savedleague
-//
-//extension ConnectToCoreData : saveToLocalData {
-//    func setFavLeague(fav: League) {
-//        //4 create NSManagedObject to save into entity
-//        let leagueToCoreData = NSManagedObject(entity: entity!, insertInto: viewContext)
-//        
-//        leagueToCoreData.setValue(fav.idLeague, forKey: "idLeague")
-//        leagueToCoreData.setValue(fav.strLeague, forKey: "strLeague")
-//        leagueToCoreData.setValue(fav.strSport, forKey: "strSport")
-//     //   leagueToCoreData.setValue(fav.strYoutube, forKey: "strYoutube")
-//      //  leagueToCoreData.setValue(fav.strLogo, forKey: "strLogo")
-//      //  leagueToCoreData.setValue(fav.strBadge, forKey: "strBadge")
-//        
-//        
-//        //5 save to coreData
-//        do{
-//            try viewContext.save()
-//            print("saved!")
-//        }catch let error {
-//            print("error while saving : \(error.localizedDescription)")
-//        }
-//    }
-//}
-//
-////MARK:- delete saved item
-//
-//extension ConnectToCoreData:deleteLocalData{
-//    func deleteLocalData(deleted: League) {
-//        // MARK: convert leagues to NSManagedObject to delete from entity
-//        print("delete begining")
-//        
-//        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "StableTable")
-//        fetchRequest.predicate = NSPredicate.init(format: "idLeague==\(deleted.idLeague)")
-//
-//        do {
-//            let objects = try viewContext.fetch(fetchRequest)
-//            for object in objects {
-//                viewContext.delete(object)
-//            }
-//            try viewContext.save()
-//        }catch{
-//            print("Couldn't delete movie!")
-//        }
-//    }
-//}
-//extension ConnectToCoreData : fetchSpecificLeague {
-//    func fetchSpecificLeague(fav: League) -> Bool {
-//        var returned : Bool = false
-//            let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "StableTable")
-//        fetchRequest.predicate = NSPredicate.init(format: "idLeague==\(fav.idLeague)")
-//
-//            do {
-//                let objects = try viewContext.fetch(fetchRequest)
-//                print("in coreData \(objects.first?.value(forKey: "strLeague"))")
-//                if (objects.first != nil){
-//                    returned = true
-//                }
-//                else{
-//                    returned = false
-//                }
-//            }catch{
-//                print("Couldn't delete movie!")
-//            }
-//        return returned    }
-//    
-//    
-//}
-//
-////MARK:- Fetch All Data
-//extension ConnectToCoreData: fetchLocalData {
-//    func fetchLocalData() -> [League] {
-//        let fetch = NSFetchRequest<NSManagedObject>(entityName: "StableTable")
-//        do {
-//            print("start fetching")
-//            fetchingDataFromCoreData = try viewContext.fetch(fetch)
-//            for item in fetchingDataFromCoreData {
-//                storedLeague = League(idLeague: (item.value(forKey: "idLeague")as! String),
-//                                      strLeague: (item.value(forKey: "strSport")as! String),
-//                                      strSport: (item.value(forKey: "strLeague")as! String),
-//                                      strLeagueAlternate: (item.value(forKey: "strLeagueAlternate")as! String))
-//                
-////                storedLeague = Legaue(idLeague:  (item.value(forKey: "idLeague") as? String),
-////                                       strSport: item.value(forKey: "strSport") as? String,
-////                                       strLeague: item.value(forKey: "strLeague") as? String
-////                                    )
-//                fetchedData.append(storedLeague!)
-//                print(storedLeague?.strLeague)
-//            }
-//        }catch let error {
-//            print("error while fetching data : \(error.localizedDescription)")
-//        }
-//        
-//        return fetchedData
-//    }
-//   
-//    
-//}
+
+
+
+import Foundation
+import CoreData
+
+protocol DeletionDelegate{
+    func deleteLeagueAtIndexPath(indexPath: IndexPath)
+}
+
+class DBManager{
+    static let sharedInstance = DBManager()
+    private init(){}
+}
+/*
+ var idLeague,strLeague, strSport, strCurrentSeason, strBadge: String
+ var strYoutube, strTwitter, strInstagram, strFaceboo
+ */
+
+extension DBManager{
+    func add(appDelegate: AppDelegate, idLeague: String, strLeague: String, strSport: String, strBadge:String, strYoutube: String){
+        
+        let manageContext = appDelegate.persistentContainer.viewContext
+        
+        if let entity = NSEntityDescription.entity(forEntityName: "FavouriteLeagueTable", in: manageContext){
+            let favouriteLeague = NSManagedObject(entity: entity, insertInto: manageContext)
+            favouriteLeague.setValue(idLeague, forKey: "idLeague")
+            favouriteLeague.setValue(strLeague, forKey: "strLeague")
+            favouriteLeague.setValue(strSport, forKey: "strSport")
+            favouriteLeague.setValue(strBadge, forKey: "strBadge")
+            favouriteLeague.setValue(strYoutube, forKey: "strYoutube")
+         
+
+            do {
+                try manageContext.save()
+            }catch let error as NSError {
+                print("Error in saving")
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    func fetchLeagues(appDelegate: AppDelegate) -> [FavouriteLeagueTable]{
+        
+        var fetchLeagues: [FavouriteLeagueTable] = []
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "FavouriteLeagueTable")
+        
+//        let predicate = NSPredicate(format: "title == %@", "")
+//        fetchRequest.predicate = predicate
+        do{
+            fetchLeagues = try managedContext.fetch(fetchRequest) as! [FavouriteLeagueTable]
+        }catch let error as NSError {
+            print("Error in saving")
+            print(error.localizedDescription)
+        }
+
+        return fetchLeagues
+    }
+    
+    
+    
+    func delete(favouriteLeague:FavouriteLeagueTable, indexPath: IndexPath, appDelegate: AppDelegate, delegate: DeletionDelegate){
+     
+
+        let managedContext = appDelegate.persistentContainer.viewContext
+        managedContext.delete(favouriteLeague)
+        do{
+            try managedContext.save()
+            delegate.deleteLeagueAtIndexPath(indexPath: indexPath)
+        }catch let error as NSError{
+            print("Error in saving")
+            print(error.localizedDescription)
+        }
+        
+    }
+    
+}

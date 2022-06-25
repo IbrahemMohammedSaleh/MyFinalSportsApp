@@ -11,11 +11,11 @@ protocol ITeamsView {
     func postTeamsView(error: Error)
 }
 protocol ITeamsPresenter {  // For Presenter
-    func fetchData(endPoint: String)
+    func fetchData()
     func onSuccess(teams: TeamsList)
     func onFail(error: Error)
 }
 protocol ITeamsModel { // For Model
-    func fetchDataFromApi(endPoint: String)
+    func fetchDataFromApi()
 }
 

@@ -8,18 +8,6 @@
 import Foundation
 
 
-//struct Leagues: Codable {
-//    let leagues: [League]
-//
-//}
-//
-//
-//// MARK: - League
-//struct League: Codable {
-//    let idLeague, strLeague, strSport: String
-//    let strLeagueAlternate: String?
-//}
-
 
 struct AllLeagueByStrSport: Codable {
     let countries: [LeagueByStrSport]

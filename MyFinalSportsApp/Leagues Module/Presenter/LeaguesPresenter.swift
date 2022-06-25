@@ -21,10 +21,10 @@ class LeaguesPresenter: ILeaguesPresenter  {
     
     
     
-    func fetchData(endPoint: String) {
+    func fetchData() {
         // telling him that iam respobsible of implementing the methods you will call 222
         let leagueModel = LeaguesModelController(iLeaguesPresenter: self) // 2
-        leagueModel.fetchDataFromApi(endPoint: endPoint)
+        leagueModel.fetchDataFromApi()
     }
     
     func onFail(error: Error) {

@@ -19,7 +19,7 @@ class LatestModelController: ILatestModel {
     }
     
     
-    func fetchDataFromApi(endPoint: String) {
+    func fetchDataFromApi() {
         
 //        apiServiceForLatest.fetchLatest(endPoint: endPoint) { latest, error in
 //            if let latest = latest {
@@ -29,7 +29,7 @@ class LatestModelController: ILatestModel {
 //                self.iLatestPresenter.onFail(error: error)
 //            }
 //        }
-        apiServiceForLatest.fetchLatest(endPoint: endPoint) { events, error in
+        apiServiceForLatest.fetchLatest() { events, error in
             if let events = events {
                 self.iLatestPresenter.onSuccess(events: events)
             }

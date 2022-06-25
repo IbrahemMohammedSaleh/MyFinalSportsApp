@@ -18,8 +18,8 @@ class TeamDetailsModelController: ITeamDetailsModel {
     }
     
     
-    func fetchDataFromApi(endPoint: String) {
-        apiServiceForTeamDetails.fetchTeamDetails(endPoint: endPoint) { teams, error in
+    func fetchDataFromApi() {
+        apiServiceForTeamDetails.fetchTeamDetails() { teams, error in
             if let teams = teams {
                 self.iTeamDetailsPresenter.onSuccess(teams: teams)
             }

@@ -13,11 +13,11 @@ protocol IMainView { // For home View
 }
 
 protocol IMainPresenter {  // For Presenter
-    func fetchData(endPoint: String)
+    func fetchData()
     func onSuccess(sports: SportsList)
     func onFail(error: Error)
 }
 
 protocol IMainModel { // For Model
-    func fetchDataFromApi(endPoint: String)
+    func fetchDataFromApi()
 }

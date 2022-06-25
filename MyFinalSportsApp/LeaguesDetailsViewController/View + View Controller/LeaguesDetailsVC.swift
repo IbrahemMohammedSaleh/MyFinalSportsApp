@@ -11,7 +11,8 @@ import UIKit
 class LeaguesDetailsVC: UIViewController {
  
     var fetchTeamsToLeagueDetails: String?
-    
+    var selectedLeague: Event?
+    @IBOutlet weak var favouriteBtnOutlet: UIBarButtonItem!
     @IBOutlet weak var teamsCollectionView: UICollectionView!
     @IBOutlet weak var latestResultsCollectionView: UICollectionView!
     @IBOutlet weak var upcomingCollectionView: UICollectionView!
@@ -28,6 +29,18 @@ class LeaguesDetailsVC: UIViewController {
     
     var titleD = ""
     var teams = [Team]()
+    
+    var isClicked: Bool = false
+    
+    
+    var leagueIdFav: String = ""
+    var strLeagueFav: String = ""
+    var sportNameFav: String = ""
+    var leagueBadgeFav: String = ""
+    var strYoutubeFav: String = ""
+    
+    var db = DBManager.sharedInstance
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     override func viewWillAppear(_ animated: Bool) {
         for item in stockTeamsArray {
@@ -51,7 +64,9 @@ class LeaguesDetailsVC: UIViewController {
                 newLatestArray.append(item3)
             }
         }
-                
+        
+        
+     
 
     }
 
@@ -78,13 +93,13 @@ class LeaguesDetailsVC: UIViewController {
 //MARK: - Presenters
         
         let teamsPresenter: ITeamsPresenter = TeamsPresenter(iTeamsView: self)
-        teamsPresenter.fetchData(endPoint: "search_all_teams.php?l=English%20Premier%20League")
+        teamsPresenter.fetchData()
         
         let eventsPresenter: IEventsPresenter = EventsPresenter(iEventsView: self)
-        eventsPresenter.fetchData(endPoint: "eventsseason.php?id=4617")
+        eventsPresenter.fetchData()
         
         let latestPresenter: ILatestPresenter = LatestPresenter(iLatestView: self)
-        latestPresenter.fetchData(endPoint: "eventsseason.php?id=4617")
+        latestPresenter.fetchData()
         
         
     }
@@ -94,8 +109,26 @@ class LeaguesDetailsVC: UIViewController {
     }
     
     @IBAction func addToFavBtnPressed(_ sender: UIBarButtonItem) {
-        
-        
+       
+        if(isClicked == false){
+            self.favouriteBtnOutlet.tintColor = UIColor.red
+            
+      
+            db.add(appDelegate: appDelegate, idLeague: "", strLeague: strLeagueFav, strSport: "", strBadge: leagueBadgeFav, strYoutube: strYoutubeFav)
+   
+            isClicked = true
+        }
+        else{
+            let alert = UIAlertController(title: "Removing Alert", message: "Remove \"\(selectedLeague?.strLeague ?? "empty")\" from favourite leagues list?", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action) in
+                self.favouriteBtnOutlet.tintColor = UIColor.systemBlue
+               // self.favouriteBtnOutlet?.deleteFavLeague(fav: self.selectedLeague!)
+                self.isClicked = false
+                
+            }))
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
     }
     
 }
@@ -231,10 +264,10 @@ extension LeaguesDetailsVC : UICollectionViewDataSource,UICollectionViewDelegate
           
           if(collectionView == teamsCollectionView) {
           let teamScreen = self.storyboard?.instantiateViewController(withIdentifier: "TeamDetailsVC") as! TeamDetailsVC
-          
+             
               teamScreen.stadiumNameTD = newTeamArray[indexPath.row].strStadium ?? ""
               teamScreen.sportsNameTD = newTeamArray[indexPath.row].strSport 
-              teamScreen.leagueNameTD = newTeamArray[indexPath.row].strLeague 
+              teamScreen.leagueNameTD = newTeamArray[indexPath.row].strLeague
               teamScreen.temaNameTD = newTeamArray[indexPath.row].strTeam 
               teamScreen.teamBadgeTD = newTeamArray[indexPath.row].strTeamBadge
               teamScreen.sportsNameTD = newTeamArray[indexPath.row].strSport

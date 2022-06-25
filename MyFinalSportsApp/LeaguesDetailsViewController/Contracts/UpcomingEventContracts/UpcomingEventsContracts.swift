@@ -11,10 +11,10 @@ protocol IEventsView {
     func postEventsView(error: Error)
 }
 protocol IEventsPresenter {  // For Presenter
-    func fetchData(endPoint: String)
+    func fetchData()
     func onSuccess(events: EventsList)
     func onFail(error: Error)
 }
 protocol IEventsModel { // For Model
-    func fetchDataFromApi(endPoint: String)
+    func fetchDataFromApi()
 }

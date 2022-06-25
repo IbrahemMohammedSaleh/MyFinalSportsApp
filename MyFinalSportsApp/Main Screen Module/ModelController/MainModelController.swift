@@ -20,8 +20,8 @@ class MainModelController: IMainModel {
     
     //Calling data from network and passing it to presenter
     
-    func fetchDataFromApi(endPoint: String) {    // 3
-        apiServiceForSportsList.fetchSportsList(endPoint: endPoint) { sports, error in
+    func fetchDataFromApi() {    // 3
+        apiServiceForSportsList.fetchSportsList() { sports, error in
             if let sports = sports {
                 self.iMainPresenter.onSuccess(sports: sports)
             }

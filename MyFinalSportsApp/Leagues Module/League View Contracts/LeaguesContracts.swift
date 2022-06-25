@@ -13,13 +13,13 @@ protocol ILeaguesView { // For home View
 }
 
 protocol ILeaguesPresenter {  // For Presenter
-    func fetchData(endPoint: String)
+    func fetchData()
     func onSuccess(countries: AllLeagueByStrSport)
     func onFail(error: Error)
 }
 
 protocol ILeaguesModel { // For Model
-    func fetchDataFromApi(endPoint: String)
+    func fetchDataFromApi()
 }
 //protocol ILeaguesView { // For home View
 //    func renderLeagueDetailsView(leagues: AllLeagues)

@@ -19,12 +19,12 @@ class LatestPresenter: ILatestPresenter {
         self.iLatestView = iLatestView
     }
     
-    func fetchData(endPoint: String) {
+    func fetchData() {
         // telling him that iam respobsible of implementing the methods you will call 222
        
 
         let latestModel = LatestModelController(iLatestPresenter: self)
-        latestModel.fetchDataFromApi(endPoint: endPoint)
+        latestModel.fetchDataFromApi()
     }
     
     func onFail(error: Error) {

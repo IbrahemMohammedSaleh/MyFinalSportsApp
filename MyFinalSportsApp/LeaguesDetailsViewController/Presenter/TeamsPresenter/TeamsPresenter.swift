@@ -21,11 +21,11 @@ class TeamsPresenter: ITeamsPresenter {
     }
  
     
-    func fetchData(endPoint: String) {
+    func fetchData() {
         // telling him that iam respobsible of implementing the methods you will call 222
        
         let teamModel = TeamsModelController(iTeamsPresenter: self)
-        teamModel.fetchDataFromApi(endPoint: endPoint)
+        teamModel.fetchDataFromApi()
         
     }
     

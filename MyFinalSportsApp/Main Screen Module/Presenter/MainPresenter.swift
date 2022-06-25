@@ -19,10 +19,10 @@ class MainPresenter: IMainPresenter {
     
     
     
-    func fetchData(endPoint: String) {
+    func fetchData() {
         // telling him that iam respobsible of implementing the methods you will call 222
         let mainModel = MainModelController(iMainPresenter: self) // 2
-        mainModel.fetchDataFromApi(endPoint: endPoint)
+        mainModel.fetchDataFromApi()
     }
     
     func onFail(error: Error) {

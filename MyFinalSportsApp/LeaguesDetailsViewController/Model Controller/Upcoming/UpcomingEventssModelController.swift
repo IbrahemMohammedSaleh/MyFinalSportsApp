@@ -19,8 +19,8 @@ class EventsModelController: IEventsModel {
     }
     
     
-    func fetchDataFromApi(endPoint: String) {
-        apiServiceForEvents.fetchEventsList(endPoint: endPoint) { events, error in
+    func fetchDataFromApi() {
+        apiServiceForEvents.fetchEventsList() { events, error in
             if let events = events {
                 self.iEventsPresenter.onSuccess(events: events)
             }
